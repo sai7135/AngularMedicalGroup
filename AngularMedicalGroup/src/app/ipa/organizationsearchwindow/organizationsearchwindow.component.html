@@ -1,0 +1,58 @@
+<form [formGroup]="organizationsearchform" (ngSubmit)="search()">
+    <table style="width: 100%;">
+        <tr style="width: 100%;"> 
+            <td align="right">
+                <label for="orgainizationid">Organization Id:</label>
+                <input type="text" formControlName="organizationId" id="orgainizationid">
+                <label for="taxid">Tax ID:</label>
+                <input type="text" formControlName="taxId" id="taxid">
+            </td>
+        </tr>
+        <tr style="width: 100%;"> 
+            <td align="right">
+                <label for="name">Name:</label>
+                <input type="text" formControlName="name" id="name">
+                <label for="npi">NPI#:</label>
+                <input type="text" formControlName="npi" id="npi">
+                <button mat-raised-button type="submit" color=warn>search</button>
+                <button mat-button type="reset" color=warn>clear all</button>
+            </td>
+        </tr>
+    </table>
+    <table mat-table [dataSource]="organizationSearchValues" style="width: 100%;">
+        <ng-container matColumnDef="organizationID">
+            <th mat-header-cell *matHeaderCellDef>  Organization ID </th>
+            <td mat-cell *matCellDef="let element"><u (click)="selectOrganization(element.organizationID)">{{element.organizationID}}</u></td>
+          </ng-container>
+          <ng-container matColumnDef="organizationName">
+            <th mat-header-cell *matHeaderCellDef> name </th>
+            <td mat-cell *matCellDef="let element"> {{element.organizationName}} </td>
+          </ng-container>
+          <ng-container matColumnDef="payToAddress.address1">
+            <th mat-header-cell *matHeaderCellDef> Address </th>
+            <td mat-cell *matCellDef="let element"> {{element.payToAddress.address1}} </td>
+          </ng-container>
+          <ng-container matColumnDef="payToAddress.city">
+            <th mat-header-cell *matHeaderCellDef> City </th>
+            <td mat-cell *matCellDef="let element"> {{element.payToAddress.city}} </td>
+          </ng-container>
+          <ng-container matColumnDef="payToAddress.state">
+            <th mat-header-cell *matHeaderCellDef> State </th>
+            <td mat-cell *matCellDef="let element"> {{element.payToAddress.state}} </td>
+          </ng-container>
+          <ng-container matColumnDef="payToAddress.zip">
+            <th mat-header-cell *matHeaderCellDef> Zip </th>
+            <td mat-cell *matCellDef="let element"> {{element.payToAddress.zip}} </td>
+          </ng-container>
+          <ng-container matColumnDef="organizationNPI">
+            <th mat-header-cell *matHeaderCellDef> NPI </th>
+            <td mat-cell *matCellDef="let element"> {{element.organizationNPI}} </td>
+          </ng-container>
+          <ng-container matColumnDef="taxID">
+            <th mat-header-cell *matHeaderCellDef> Tax ID </th>
+            <td mat-cell *matCellDef="let element"> {{element.taxID}} </td>
+          </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</form>

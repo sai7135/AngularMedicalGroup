@@ -1,0 +1,18 @@
+<body class="background-img">
+<mat-toolbar color="warn">
+    <span>Angular Medical Group</span>
+</mat-toolbar>
+    <mat-card class="login-card">
+        <form (ngSubmit)="login(f)" #f="ngForm">
+            <mat-card-title>Login</mat-card-title>
+            <mat-form-field class="widthset" appearance="outline">
+                <input matInput  placeholder="username" name="username" required ngModel>
+            </mat-form-field><br>
+            <mat-form-field class="widthset" appearance="outline">
+                <input matInput type="password" placeholder="password" required name="password" ngModel>
+            </mat-form-field><br>
+            <button mat-raised-button type="submit" color="primary">Login</button>
+            <button mat-button color=warn (click)="forgotpassword()">Forgot Password?</button>
+        </form>
+    </mat-card>
+</body>

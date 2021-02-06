@@ -1,0 +1,12 @@
+.leftmargin{
+    margin-left: 10%;
+}
+.space{
+    flex: 1 1 auto;
+}
+.hide{
+    visibility: hidden;
+}
+.fit{
+    zoom:80%
+}

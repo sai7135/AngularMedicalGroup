@@ -1,0 +1,213 @@
+<mat-card>
+    <mat-card-title>Add Organization</mat-card-title>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+        <form [formGroup]="addOrg" (ngSubmit)="onSubmit()" [ngClass]="{'showinvalidcolumns':show}">
+        <table>
+            <tr>
+                <td colspan="2" align="center">
+                <table>
+                    <tr>
+                        <td align="right"> <span style="color:red;">*</span>Organization Id:</td>
+                        <td><input type="text" [ngClass]="showinvalidcolumns" formControlName="organizationID"></td>
+                        <td *ngIf="addOrg.get('organizationID')?.errors?.organizationexist && addOrg.get('organizationID').touched"><span color=warn style="color: red;">Organization already exist</span></td>
+                    </tr>
+                    <tr>
+                        <td align="right">Category:</td>
+                        <td><input type="text" [ngClass]="showinvalidcolumns" formControlName="category"></td>
+                        <td><button mat-button type="button"> <mat-icon color=warn>search</mat-icon></button></td>
+                    </tr>
+                    <tr>
+                        <td align="right"><span style="color:red;">*</span>Organization Name:</td>
+                        <td><input type="text" [ngClass]="showinvalidcolumns" formControlName="organizationName"></td>
+                    </tr>
+                    <tr>
+                        <td align="right"><span style="color:red;">*</span>Organization Long Name:</td>
+                        <td><input type="text" [ngClass]="showinvalidcolumns" formControlName="organizationLongName"></td>
+                    </tr>
+                    <tr>
+                        <td align="right">Accounting System Name:</td>
+                        <td><input type="text" [ngClass]="showinvalidcolumns" formControlName="accountingSystemName"></td>
+                    </tr>
+                    <tr>
+                        <td align="right"><span style="color:red;">*</span>Tax ID:</td>
+                        <td><input type="text" [ngClass]="showinvalidcolumns" formControlName="taxID"></td>
+                    </tr>
+                    <tr>
+                        <td align="right"><span style="color: red;">*</span>Organization NPI:</td>
+                        <td><input type="text" [ngClass]="showinvalidcolumns" formControlName="organizationNPI"></td>
+                    </tr>
+                    <tr>
+                        <td align="right">SSN:</td>
+                        <td><input type="text" [ngClass]="showinvalidcolumns" formControlName="ssn"></td>
+                    </tr>
+                    <tr>
+                        <td align="right"><span style="color:red;">*</span>Taxonomy Code:</td>
+                        <td><input type="text" [ngClass]="showinvalidcolumns" formControlName="taxonomyCode"></td>
+                        <td><button mat-button type="button"> <mat-icon color=warn>search</mat-icon></button></td>
+                   
+                    </tr>
+                    <tr>
+                        <td align="right">Capitation Account:</td>
+                        <td><select [ngClass]="showinvalidcolumns" formControlName="capitationAccount"></select></td>
+                    </tr>
+                    <tr>
+                        <td align="right">Claims Account:</td>
+                        <td><select [ngClass]="showinvalidcolumns" formControlName="claimsAccount"></select></td>
+                    </tr>
+                    <tr>
+                        <td align="right">Auto Generate ERA:</td>
+                        <td><input [ngClass]="showinvalidcolumns" formControlName="autoGenerateERA" type="checkbox"></td>
+                    </tr>
+            </table>
+        </tr>
+    <tr>
+        <td>
+        <fieldset>
+            <legend><b>Pay To Address:</b></legend>
+            <mat-card style="background-color: aqua;color:blue">
+                <ol>
+                    <li>This address will be printed on checks</li>
+                    <li>This address will be situational to sent on encounters,only when different then billing address</li>
+                </ol>
+            </mat-card>
+                <table formGroupName="payToAddress">
+                    <tr>
+                        <td align="right">Type:</td>
+                        <td>PRIMARY</td>
+                    </tr>
+                    <tr>
+                        <td align="right"><span style="color:red;">*</span>Address1:</td>
+                        <td><input [ngClass]="showinvalidcolumns" type="text" formControlName="address1"></td>
+                    </tr>
+                    <tr>
+                        <td align="right">Address2:</td>
+                        <td><input [ngClass]="showinvalidcolumns" type="text" formControlName="address2"></td>
+                    </tr>
+                    <tr>
+                        <td align="right"><span style="color:red;">*</span>City:</td>
+                        <td><input [ngClass]="showinvalidcolumns" type="text" formControlName="city"></td>
+                    </tr>
+                    <tr>
+                        <td align="right"><span style="color:red;">*</span>State/Region:</td>
+                        <td><input type="text" disabled=true formControlName="state"></td>
+                        <td><button [ngClass]="showinvalidcolumns" mat-button type="button" (click)="paytoaddressstatesearchopen()"> <mat-icon color=warn>search</mat-icon></button></td>
+                   </tr>
+                    <tr>
+                        <td align="right"><span style="color:red;">*</span>Zip:</td>
+                        <td><input [ngClass]="showinvalidcolumns" type="text" formControlName="zip"></td>
+                    </tr>
+                    <tr>
+                        <td align="right">International Zip:</td>
+                        <td><input [ngClass]="showinvalidcolumns" type="text" formControlName="internationalZip"></td>
+                    </tr>
+                    <tr>
+                        <td align="right">Country/District:</td>
+                        <td><input [ngClass]="showinvalidcolumns" type="text" formControlName="countryDistict"></td>
+                        <td><button mat-button type="button"> <mat-icon color=warn>search</mat-icon></button></td>
+                    </tr>
+                    <tr>
+                        <td align="right">Country:</td>
+                        <td><input [ngClass]="showinvalidcolumns" type="text" formControlName="country"></td>
+                        <td><button mat-button type="button"> <mat-icon color=warn>search</mat-icon></button></td>
+                   </tr>
+                    <tr>
+                        <td align="right">Phone:</td>
+                        <td><input [ngClass]="showinvalidcolumns" PhoneMask type="text" formControlName="phone"></td>
+                    </tr>
+                    <tr>
+                        <td align="right">Fax Number:</td>
+                        <td><input [ngClass]="showinvalidcolumns" PhoneMask type="text" formControlName="faxNumber"></td>
+                    </tr>
+                    <tr>
+                        <td align="right">E-mail:</td>
+                        <td><input [ngClass]="showinvalidcolumns" type="text" formControlName="eMail"></td>
+                    </tr>
+                    <tr>
+                        <td align="right">Contact-Person:</td>
+                        <td><input [ngClass]="showinvalidcolumns" type="text" formControlName="contactPerson"></td>
+                    </tr>
+                </table>
+        </fieldset>
+    </td>
+    <td>
+        <fieldset>
+                <legend><b>Billing Address:</b></legend>
+                <mat-card style="background-color: aqua;color:blue">
+                    <ol>
+                        <li>Usually this address doesn't contain "PO Box, Lock Box or File Box" like values,many of the health plans doesnot accept such entries in encounter reporting</li>
+                        <li>This address is mandatory to sent on encounters</li>
+                    </ol>
+                </mat-card>
+                <table formGroupName="billingAddress">
+                    <tr>
+                        <td align="right"><input type="checkbox" (change)="sameasPrimary($event)"></td>
+                        <td>Same as Pay To Address(PRIMARY)</td>
+                    </tr>
+                    <tr>
+                        <td align="right">Address1:</td>
+                        <td><input [ngClass]="showinvalidcolumns" type="text" formControlName="address1"></td>
+                    </tr>
+                    <tr>
+                        <td align="right">Address2:</td>
+                        <td><input [ngClass]="showinvalidcolumns" type="text" formControlName="address2"></td>
+                    </tr>
+                    <tr>
+                        <td align="right">City:</td>
+                        <td><input [ngClass]="showinvalidcolumns" type="text" formControlName="city"></td>
+                    </tr>
+                    <tr>
+                        <td align="right">State/Region:</td>
+                        <td><input [ngClass]="showinvalidcolumns" type="text" disabled=true formControlName="state"></td>
+                        <button mat-button type="button" (click)="billingaddressstatesearchopen()"> <mat-icon color=warn>search</mat-icon></button>
+                    </tr>
+                    <tr>
+                        <td align="right">Zip:</td>
+                        <td><input [ngClass]="showinvalidcolumns" type="text" formControlName="zip"></td>
+                    </tr>
+                    <tr>
+                        <td align="right">International Zip:</td>
+                        <td><input [ngClass]="showinvalidcolumns" type="text" formControlName="internationalZip"></td>
+                    </tr>
+                    <tr>
+                        <td align="right">Country/District:</td>
+                        <td><input [ngClass]="showinvalidcolumns" type="text" formControlName="countryDistict"></td>
+                        <td><button type="button" mat-button> <mat-icon color=warn>search</mat-icon></button></td>
+                    </tr>
+                    <tr>
+                        <td align="right">Country:</td>
+                        <td><input type="text" formControlName="country"></td>
+                        <td><button type="button" mat-button> <mat-icon color=warn>search</mat-icon></button></td>
+                    </tr>
+                    <tr>
+                        <td align="right">Phone:</td>
+                        <td><input [ngClass]="showinvalidcolumns" PhoneMask type="text" formControlName="phone"></td>
+                    </tr>
+                    <tr>
+                        <td align="right">Fax Number:</td>
+                        <td><input [ngClass]="showinvalidcolumns" PhoneMask type="text" formControlName="faxNumber"></td>
+                    </tr>
+                    <tr>
+                        <td align="right">E-mail:</td>
+                        <td><input [ngClass]="showinvalidcolumns" type="text" formControlName="eMail"></td>
+                    </tr>
+                    <tr>
+                        <td align="right">Contact-Person:</td>
+                        <td><input [ngClass]="showinvalidcolumns" type="text" formGroupName="contactPerson"></td>
+                    </tr>
+                </table>
+        </fieldset>
+    </td>
+    </tr>
+    <tr>
+        <td align="center">
+            <button mat-raised-button color=warn type="submit">Save</button>
+        </td>
+        <td align="center">
+            <button mat-raised-button color=warn type="reset">Reset</button>
+        </td>
+    </tr>
+</table>
+</form>
+</mat-card-content>
+</mat-card>

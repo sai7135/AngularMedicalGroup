@@ -1,0 +1,60 @@
+<mat-card>
+    <mat-card-title>Upload 837PUpload File</mat-card-title>
+    <mat-card-content>
+        <fieldset>
+            <legend><b>Upload a New 837P Claims File</b></legend>
+            <label>Trading Partner:</label><input type="text"><br>
+            <label>File:</label><input #filename type="text"><button mat-raised-button (click)="uploadEdi()" color=warn>Upload</button><br>
+            <button mat-raised-button color=warn (click)="browseedi()">Browse</button>
+            <input type="file" style="display: none;" (change)="changediselection($event.target.files)" multiple="false" accept=".edi,.txt,.x12,.prd,.837,.clm" #fileUpload>
+        </fieldset>
+    </mat-card-content>
+</mat-card>
+<table mat-table [dataSource]="claimsData" style="width: 100%;">
+    <ng-container matColumnDef="fileID">
+        <th align="center" mat-header-cell *matHeaderCellDef>File Id</th>
+        <td mat-cell *matCellDef="let element"><button (click)="downloadfile(element.fileID)">{{element.fileID}}</button></td>
+    </ng-container>
+    <ng-container matColumnDef="clmid">
+        <th align="center" mat-header-cell *matHeaderCellDef>Sys.Claim ID</th>
+        <td mat-cell *matCellDef="let element"><button>{{element.clmid}}</button></td>
+    </ng-container>
+    <ng-container matColumnDef="memberid">
+        <th align="center" mat-header-cell *matHeaderCellDef>Member ID</th>
+        <td mat-cell *matCellDef="let element">{{element.memberid}}</td>
+    </ng-container>
+    <ng-container matColumnDef="membername">
+        <th align="center" mat-header-cell *matHeaderCellDef>Member Name</th>
+        <td mat-cell  *matCellDef="let element">{{element.membername}}</td>
+    </ng-container>
+    <ng-container matColumnDef="dob">
+        <th align="center" mat-header-cell *matHeaderCellDef>DOB</th>
+        <td mat-cell *matCellDef="let element">{{element.dob}}</td>
+    </ng-container>
+    <ng-container matColumnDef="renderingprovider">
+        <th align="center" mat-header-cell *matHeaderCellDef>Rendering Provider</th>
+        <td mat-cell *matCellDef="let element">{{element.renderingprovider}}</td>
+    </ng-container>
+    <ng-container matColumnDef="claimNo">
+        <th align="center" mat-header-cell *matHeaderCellDef>Claim No</th>
+        <td mat-cell *matCellDef="let element">{{element.claimNo}}</td>
+    </ng-container>
+    <ng-container matColumnDef="dcn">
+        <th align="center" mat-header-cell *matHeaderCellDef>DCN#</th>
+        <td mat-cell *matCellDef="let element">{{element.dcn}}</td>
+    </ng-container>
+    <ng-container matColumnDef="billedamount">
+        <th align="center" mat-header-cell *matHeaderCellDef>Billed Ammount($)</th>
+        <td mat-cell *matCellDef="let element">{{element.billedamount}}</td>
+    </ng-container>
+    <ng-container matColumnDef="tradingPartner">
+        <th align="center" mat-header-cell *matHeaderCellDef>Trading Partner</th>
+        <td mat-cell *matCellDef="let element">{{element.tradingPartner}}</td>
+    </ng-container>
+    <ng-container matColumnDef="uploadDate">
+        <th align="center" mat-header-cell *matHeaderCellDef>Upload Date</th>
+        <td mat-cell *matCellDef="let element">{{element.uploadDate}}</td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

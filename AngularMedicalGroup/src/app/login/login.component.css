@@ -1,0 +1,19 @@
+
+.login-card{
+    position: absolute;
+    width:30vw;
+    top:30%;
+    left:35%;
+}
+.background-img{
+    background-image: url("https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80");
+    margin-top: none;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.widthset{
+    width:30vw;
+}
+.notification{
+    margin-top: 10vh !important;
+}

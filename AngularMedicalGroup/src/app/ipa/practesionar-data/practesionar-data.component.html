@@ -1,0 +1,93 @@
+<mat-card style="width: fit-content;">
+    <mat-card-title>Practesiona Data</mat-card-title>
+    <mat-card-content>
+        <table>
+            <tr>
+                <td>Provider Type:</td>
+                <td>
+                    <select multiple>
+                        <option>All</option>
+                        <option *ngFor="let type of providerType">{{type}}</option>
+                    </select>
+                </td>
+                <td>Contract Type:</td>
+                <td>
+                    <select multiple>
+                        <option>All</option>
+                        <option>Contract-Non Credential</option>
+                        <option>Contract Non Referal</option>
+                        <option>Contracted</option>
+                    </select>
+                </td>
+                <td>Primary Speciality:</td>
+                <td>
+                    <select multiple style="width:98%;">
+                        <option>All</option>
+                        <option *ngFor="let each of primarySpeciality" [value]="each">{{each.abbrevation}} - {{each.name}}</option>   
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>First Name:</td>
+                <td>
+                    <input type="text">
+                </td>
+                <td>Last Name:</td>
+                <td><input type="text"></td>
+                <td>Profile Status:</td>
+                <td><select>
+                    <option selected>Active</option>
+                    <option>Inactive</option>
+                </select></td>
+                <td>Credentialed?:</td>
+                <td>
+                    <select>
+                        <option></option>
+                        <option>yes</option>
+                        <option>No</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Tax ID:</td>
+                <td><input type="text"></td>
+                <td>NPI#:</td>
+                <td><input type="text"></td>
+                <td>Other ID:</td>
+                <td><input type="text"></td>
+                <td>Provider ID:</td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td>Health Plan:</td>
+                <td><input type="text"></td>
+                <td>Expired?:</td>
+                <td><select>
+                    <option></option>
+                    <option>Yes</option>
+                    <option>No</option>
+                </select></td>
+                <td>Expires In:</td>
+                <td><select>
+                    <option></option>
+                    <option>30</option>
+                </select>days</td>
+                <td>Keyword</td>
+                <td><input type="text"></td>
+            </tr>
+        </table>
+        <button mat-raised-button color=warn>Credential</button><button mat-raised-button (click)="navlink('non-cred')" color=warn>Quick Add</button>
+        <button mat-raised-button (click)="choosethefile($event)" color=warn>add provider throw excel</button>
+        <label *ngIf="fileSelected">{{providerFile.name}}</label>
+        <button mat-raised-button color=warn *ngIf=fileSelected (click)="uploadfile()">Upload</button>
+        <input type="file" #selectfile style="display: none;" accept=".xlsx" multiple="false" (change)="upload($event.target.files)">
+        <button mat-raised-button color=warn (click)="chooseProvider()">Select Providers</button>
+        <label *ngIf="providerSelected">{{ProviderFile.name}}</label>
+        <button mat-raised-button *ngIf="providerSelected" (click)="uploadProviders()"  color=warn>Upload Providers</button> <mat-progress-spinner
+        color=primary
+        mode="determinate"
+        [value]="uploadProgress">
+    </mat-progress-spinner>
+        <input type="file" #selectProviderFile style="display: none;" accept=".xlsx" multiple="false" (change)="selectProvider($event.target.files)">
+    </mat-card-content>
+</mat-card>

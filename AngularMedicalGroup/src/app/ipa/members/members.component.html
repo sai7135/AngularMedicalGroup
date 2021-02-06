@@ -1,0 +1,558 @@
+<mat-card class="fit">
+    <mat-card-title>
+        <button mat-raised-button>
+            <mat-icon color=warn>info</mat-icon>
+        </button>
+        <button mat-raised-button (click)="add()">
+            <mat-icon color=warn>add</mat-icon>
+        </button>
+        <button mat-raised-button (click)="edit()" [disabled]="!membersaved && !memberviewmode">
+            <mat-icon color=warn>edit</mat-icon>
+        </button>
+        <button mat-raised-button [disabled]="!editmode" (click)="close()">
+            <mat-icon color=warn>close</mat-icon>
+        </button>
+        <button mat-raised-button [disabled]="formDisabled && !editmode" (click)="savemember()">
+            <mat-icon color=warn>save</mat-icon>
+        </button>
+        <button mat-raised-button [disabled]="formDisabled">
+            <mat-icon color=warn>publish</mat-icon>
+        </button>
+        <button mat-raised-button (click)="search()">
+            <mat-icon color=warn>search</mat-icon>
+        </button>
+        <button mat-raised-button>
+            <mat-icon color=warn>view_list</mat-icon>
+        </button>
+        <button mat-raised-button>
+            <mat-icon color=warn>cached</mat-icon>
+        </button>
+        <button mat-raised-button disabled="true">
+            <mat-icon color=warn>medical_services</mat-icon>
+        </button>
+        <button mat-raised-button disabled="true">
+            <mat-icon color=warn>note_add</mat-icon>
+        </button>
+        <span class="leftmargin headline3">Members</span><br>
+        <table style="width: 100%;">
+            <tr>
+                <td align="right">
+                    <button mat-raised-button disabled="true">
+                        <mat-icon color=warn>calendar_today</mat-icon>
+                    </button>
+                    <button mat-raised-button disabled="true">
+                        <mat-icon color=warn>backup</mat-icon>
+                    </button>
+                    <button mat-raised-button disabled="true">
+                        <mat-icon color=warn>warning</mat-icon>
+                    </button>
+                    <button mat-raised-button disabled="true">
+                        <mat-icon color=warn>monetization_on</mat-icon>
+                    </button>
+                    <button mat-raised-button>
+                        <mat-icon color=warn>file_copy</mat-icon>
+                    </button>
+                    <button mat-raised-button>
+                        <mat-icon color=warn>print</mat-icon>
+                    </button>
+                    <button mat-raised-button [disabled]="formDisabled && !memberviewmode">
+                        <mat-icon color=warn>first_page</mat-icon>
+                    </button>
+                    <select>
+                        <option></option>
+                    </select>
+                    <button mat-raised-button [disabled]="formDisabled && !memberviewmode">
+                        <mat-icon color=warn>last_page</mat-icon>
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </mat-card-title>
+    <mat-card-content>
+        <mat-tab-group>
+            <mat-tab class="grid-container" label="Manage Member Eligibility" color=warn>
+                <mat-card style="background-color: #f1f1f1;" class="membercard">
+                    <form [formGroup]="membersGroup">
+                        <fieldset style="border:none" [disabled]="(formDisabled || membersaved) && !editmode">
+                    <mat-card-content>
+                        <table>
+                            <tr>
+                                <td>
+                        <table>
+                            <tr> 
+                                <mat-card>
+                                    <mat-card-title>Identify Member</mat-card-title>
+                                <td>
+                                    <table>
+                                        <tr>
+                                            <td align="right">
+                                                <label for="companyId">Company Id:</label>
+                                            </td>
+                                            <td>
+                                                <input type="text" id="companyId" disabled value="AMG">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="right">
+                                                <label for="lastName">Last Name:</label>
+                                            </td>
+                                            <td>
+                                                <input type="text" id="lastName" formControlName="lastName">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="right">
+                                                <label for="firstName">First Name:</label>
+                                            </td>
+                                            <td>
+                                                <input type="text" id="firstName" formControlName="firstName">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="right">
+                                                <label for="middleName">Middle Name:</label>
+                                            </td>
+                                            <td>
+                                                <input type="text" id="middleName" formControlName="middleName">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="right">
+                                                <label for="gender">Gender:</label>
+                                            </td>
+                                            <td>
+                                                <select id="gender" formControlName="gender">
+                                                    <option value="">Select One</option>
+                                                    <option value="m">Male</option>
+                                                    <option value="f">Female</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="right">
+                                                <label for="birthDate">Birth Date:</label>
+                                            </td>
+                                            <td>
+                                                <table>
+                                                    <tr>
+                                                        <td>
+                                                            <app-date-picker-cust type="text" id="birthDate" formControlName="BirthDate" [pickerref]="dob"></app-date-picker-cust>
+                                                            
+                                                        </td>
+                                                        <td>
+                                                            <mat-datepicker-toggle [for]="dob"></mat-datepicker-toggle>
+                                                            <mat-datepicker #dob ></mat-datepicker>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="right">
+                                                <label for="deathDate">Death Date:</label>
+                                            </td>
+                                            <td>
+                                                <input type="text" id="deathDate">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="right">
+                                                <label for="memberStatus">Member Status</label>
+                                            </td>
+                                            <td>
+                                                <input type="text" id="memberStatus">
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td>
+                                    <table>
+                                        <tr>
+                                            <td align="right">
+                                                <label for="memberId">Member ID:</label>
+                                            </td>
+                                            <td>
+                                                <input type="text" id="memberId" formControlName="memberId">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="right" >
+                                                <input [ngClass]="{'hide':editmode}" type="checkbox" id="autogenerateid" formControlName="autogenmemid" (change)="memberidautogen($event.target.checked)">
+                                            </td>
+                                            <td>
+                                                <label [ngClass]="{'hide':editmode}" for="autogenerateid">Auto Generate Member ID</label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="right">
+                                                <label for="suffix">Suffix:</label>
+                                            </td>
+                                            <td>
+                                                <input type="text" id="suffix" formControlName="suffixName">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="right">
+                                                <label for="rafScore">RAF Score:</label>
+                                            </td>
+                                            <td>
+                                                <input type="text" id="rafScore">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="right">
+                                                <label for="memberSSN">Member SSN:</label>
+                                            </td>
+                                            <td>
+                                                <input type="text" id="memberSSN">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="right">
+                                                <label for="birthSeq">Birth Seq:</label>
+                                            </td>
+                                            <td>
+                                                <input type="text" id="birthSeq">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="right">
+                                                <label for="age">Age:</label>
+                                            </td>
+                                            <td>
+                                                <input type="text" formControlName="age" id="age" disabled="true">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="right">
+                                                <label for="secondaryID">Secondary ID:</label>
+                                            </td>
+                                            <td>
+                                                <input type="text" id="secondaryID">
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                 </mat-card>
+                            </tr>
+                            <tr>
+                                <mat-card>
+                                    <mat-card-title>Member Address</mat-card-title>
+                                    <td>
+                                        <table>
+                                            <tr>
+                                                <td align="right">
+                                                    <label for="addressOne">Address 1:</label>
+                                                </td>
+                                                <td colspan="3">
+                                                    <input style="width:100%" type="text" formControlName="address1" id="addressOne">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="right">
+                                                    <label for="addressTwo">Address 2:</label>
+                                                </td>
+                                                <td colspan="3">
+                                                    <input style="width:100%" type="text" id="addressTwo" formControlName="address2">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="right">
+                                                    <label for="city">City:</label>
+                                                </td>
+                                                <td>
+                                                    <input type="text" id="city" formControlName="city">
+                                                </td>
+                                                <td align="right">
+                                                    <label for="state">State:</label>
+                                                </td>
+                                                <td>
+                                                    <input type="text" id="state" formControlName="state">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="right">
+                                                    <label for="zip">Zip:</label>
+                                                </td>
+                                                <td>
+                                                    <input type="text" id="zip" formControlName="zip">
+                                                </td>
+                                                <td align="right">
+                                                    <label for="interzip">Inter Zip:</label>
+                                                </td>
+                                                <td>
+                                                    <input type="text" id="interzip">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="right">
+                                                    <label for="country">Country:</label>
+                                                </td>
+                                                <td>
+                                                    <input type="text" id="country" formControlName="country">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="right">
+                                                    <label for="country">Country:</label>
+                                                </td>
+                                                <td colspan="3">
+                                                    <input style="width: 100%;" type="text" id="country">
+                                                </td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                <td align="right">
+                                                    <label for="workPhone">Work Phone:</label>
+                                                </td>
+                                                <td>
+                                                    <input type="text" id="workPhone">
+                                                </td>
+                                                <td align="right">
+                                                    <label for="ext">Ext:</label>
+                                                </td>
+                                                <td>
+                                                    <input type="text" id="ext">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="right">
+                                                    <label for="phone">Phone:</label>
+                                                </td>
+                                                <td>
+                                                    <input type="text" id="phone">
+                                                </td>
+                                                <td align="right">
+                                                    <label for="fax">Fax:</label>
+                                                </td>
+                                                <td>
+                                                    <input type="text" id="fax">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="right">
+                                                    <label for="email">Email:</label>
+                                                </td>
+                                                <td colspan="3">
+                                                    <input style="width: 100%;" type="text" id="email">
+                                                </td>
+                                            </tr>
+                                        </table>   
+                                    </td>
+                                </mat-card>
+                            </tr>
+                            <tr>
+                                <mat-card>
+                                    <mat-card-title>Subscriber info</mat-card-title>
+                                    <td>
+                                        <table>
+                                            <tr>
+                                                <td align="right">
+                                                    <label for="subid">Sub. ID:</label>
+                                                </td>
+                                                <td>
+                                                    <input type="text" id="subid">
+                                                </td>
+                                                <td align="right" colspan="2">
+                                                    <input type="checkbox" id="addtosub">
+                                                    <label for="addtosub">Add To Subscriber</label>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="right">
+                                                    <label for="relation">Relation:</label>
+                                                </td>
+                                                <td>
+                                                    <input type="text" id="relation">
+                                                </td>
+                                                <td align="right">
+                                                    <label for="contentType">Content Type</label>
+                                                </td>
+                                                <td>
+                                                    <input type="text" id="contentType">
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </mat-card>
+                            </tr>
+                        </table>
+                        </td>
+                        <td valign="top">
+                            <table>
+                                <tr><td>
+                            <mat-card>
+                                <mat-card-title>Current/HP Benefit Code</mat-card-title>
+                                <table>
+                                    <tr>
+                                        <td align="right">HP+Benefit Code:</td>
+                                        <td align="left">
+                                            <table>
+                                                <tr>
+                                                    <td><input type="text" formControlName="hp"></td>
+                                                    <td align="left"><button mat-button [disabled]="editmode" (click)="pophpsearch()"><mat-icon>search</mat-icon></button></td>
+                                                </tr>
+                                            </table>
+                                            </td>
+                                        <td align="left">+</td>
+                                        <td align="left"><input type="text" formControlName="hpcode"></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4" align="center">
+                                        <p>{{membersGroup.get("description").value}}</p></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="right"><label for="fromDate">From:</label></td>
+                                        <td>
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <app-date-picker-cust type="text" id="fromDate" formControlName="hpfromdate" [pickerref]="hpfromdate"></app-date-picker-cust></td>
+                                                    <td><mat-datepicker-toggle [for]="hpfromdate"></mat-datepicker-toggle><mat-datepicker #hpfromdate ></mat-datepicker></td>
+                                                </tr> 
+                                            </table>
+                                        </td>
+                                        <td align="right"><label for="toDate">To:</label></td>
+                                        <td>
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <app-date-picker-cust type="text" id="toDate" formControlName="hptoDate" [pickerref]="hptodate"></app-date-picker-cust>
+                                                        </td>
+                                                    <td><mat-datepicker-toggle  [for]="hptodate"></mat-datepicker-toggle><mat-datepicker #hptodate ></mat-datepicker></td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td>
+                                            <table *ngIf="memberviewmode">
+                                                <tr>
+                                                    <td>
+                                                        <button mat-button>
+                                                            <mat-icon>edit</mat-icon>
+                                                        </button></td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="right"><label for="empGrp">Emp Group:</label></td>
+                                        <td><input type="text" id="empGrp"></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="right"><label for="empGrp">Maintenance Reason:</label></td>
+                                        <td colspan="3"><input style="width: 100%;" type="text" id="empGrp"></td>
+                                    </tr>
+                                </table>
+                            </mat-card>
+                        </td></tr>
+                            <tr>
+                                <mat-card>
+                                    <mat-card-title>Current Site Information:</mat-card-title>
+                                    <table>
+                                        <tr>
+                                            <td align="right"><label for="siteNumb">Site Number:</label></td>
+                                            <td><input type="text" id="siteNumb"></td>
+                                        </tr>
+                                        <tr>
+                                            <td align="right"><label for="csfrmdt">From:</label></td>
+                                            <td><input type="text" id="csfrmdt"></td>
+                                            <td align="right"><label for="cstodt">To:</label></td>
+                                            <td><input type="text" id="cstodt"></td>
+                                        </tr>
+                                    </table>
+                                </mat-card>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <mat-card>
+                                        <mat-card-title>Current PCP</mat-card-title>
+                                        <table>
+                                            <tr>
+                                                <td align="right"><label for="pcpid">PCP ID:</label></td>
+                                                <td><input type="text" formControlName="pcpid" style="width: 100%;" id="pcpid"></td>
+                                                <td><button mat-button (click)="searchpcp()"> <mat-icon>search</mat-icon> </button></td>
+                                                <td> <span *ngIf="membersGroup.get('providerlastname').value != null || membersGroup.get('providerfirstname').value!=null">{{membersGroup.get('providerlastname').value+','+membersGroup.get('providerfirstname').value}}</span></td>
+                                                <td *ngIf="memberviewmode">
+                                                    <button mat-button>
+                                                        <mat-icon>edit</mat-icon>
+                                                    </button></td>
+                                            </tr>
+                                            <tr>
+                                                <td align="right"><label for="pcpprimorg">PCP Primary Organization:</label></td>
+                                                <td colspan="4"><input type="text" formControlName="organizationName" style="width: 100%;" id="pcpprimorg"></td>
+                                            </tr>
+                                            <tr>
+                                                <td align="right"><label for="mntrsn">Maintanance Reason:</label></td>
+                                                <td colspan="4"><input type="text" style="width: 100%;" id="mntrsn"></td>
+                                            </tr>
+                                            <tr>
+                                                <td align="right"><label for="frmpcpdt">From:</label></td>
+                                                <td>
+                                                    <table>
+                                                        <tr>
+                                                            <td><app-date-picker-cust type="text" id="frmpcpdt" formControlName="pcpfromdate" [pickerref]="pcpfromdate"></app-date-picker-cust>
+                                                               </td>
+                                                            <td><mat-datepicker-toggle  [for]="pcpfromdate"></mat-datepicker-toggle><mat-datepicker #pcpfromdate ></mat-datepicker></td>   
+                                                        </tr>
+                                                    </table>
+                                                </td>  
+                                                <td align="right"><label for="topcpdt">To:</label></td>
+                                                <td>
+                                                    <table>
+                                                        <tr>
+                                                            <td><app-date-picker-cust type="text" id="topcpdt" formControlName="pcptodate" [pickerref]="pcptodate"></app-date-picker-cust></td>
+                                                            <td><mat-datepicker-toggle  [for]="pcptodate"></mat-datepicker-toggle><mat-datepicker #pcptodate ></mat-datepicker></td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </mat-card>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <mat-card>
+                                        <mat-card-title>Additional Insurance/COB</mat-card-title>
+                                        <table>
+                                            <tr>
+                                                <td>Other Coverage:</td>
+                                                <td><button mat-raised-button color=warn>View COB Details</button></td>
+                                            </tr>
+                                        </table>
+                                    </mat-card>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <mat-card>
+                                        <mat-card-title>Additional Insurance/COB</mat-card-title>
+                                        <table>
+                                            <tr>
+                                                <td><button mat-raised-button color=warn>View Eligibility History</button></td>
+                                                <td><button mat-raised-button color=warn>View Claim History</button></td>
+                                                <td><button mat-raised-button color=warn>View Auth History</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td><button mat-raised-button color=warn>View Member Condition</button></td>
+                                                <td><button mat-raised-button color=warn>View ICD History</button></td>
+                                                <td><button mat-raised-button color=warn>Add As Subscriber</button></td>
+                                            </tr>
+                                        </table>
+                                    </mat-card>
+                                </td>
+                            </tr>
+                            </table>
+                        </td>
+                        </tr>
+                    </table>
+                    </mat-card-content>
+                </fieldset>
+                    </form>
+                </mat-card>
+            </mat-tab>
+            <mat-tab label="Manage Member Eligibility - Additional Info" color=warn>
+            </mat-tab>
+        </mat-tab-group>
+    </mat-card-content>
+</mat-card>

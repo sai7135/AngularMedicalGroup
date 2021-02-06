@@ -1,0 +1,147 @@
+<mat-card>
+    <mat-card-title>Benefit Master - Add</mat-card-title>
+    <form [formGroup]="benefitMasterForm" (ngSubmit)="SaveBenefitMaster()">
+        <table style="width:100%;">
+            <tr>
+                <td>
+                    <table>
+                        <tr>
+                            <td align="right"><span style="color:red">*</span>Health Plan Code:</td>
+                            <td><input type="text" formControlName="healthPlanCode"></td>
+                        </tr>
+                        <tr>
+                            <td align="right">Employer Group:</td>
+                            <td><input type="text" formControlName="employerGroup"></td>
+                        </tr>
+                    </table>
+                </td>
+                <td>
+                    <table>
+                        <tr>
+                            <td align="right"><span style="color:red;">*</span>Benefit Code:</td>
+                            <td> <input type="text" formControlName="benefitCode"></td>
+                        </tr>
+                        <tr>
+                            <td align="right"><span style="color:red">*</span>Description:</td>
+                            <td><input type="text" formControlName="description"></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+
+                <td style="width:80%;">
+                        <fieldset formGroupName="dateRange">
+                            <legend><b>Date Range:</b></legend>
+                            <label><span style="color: red;">*</span>Effective from Date:</label>
+                            <input style="width:10%;" formControlName="effectiveFromDate" [matDatepicker]="effectiveFromDate">
+                            <mat-datepicker-toggle matSuffix [for]="effectiveFromDate"></mat-datepicker-toggle>
+                            <mat-datepicker #effectiveFromDate></mat-datepicker>
+                            <label>To Date:</label>
+                            <input formControlName="toDate" style="width:10%;" [matDatepicker]="toDate">
+                            <mat-datepicker-toggle suffix [for]="toDate"></mat-datepicker-toggle>
+                            <mat-datepicker #toDate></mat-datepicker>
+                            <label><span style="color: red;">*</span>Accumuilation Period:</label>
+                            <input type="text" formControlName="accumuilation" style="width:10%;">
+                            <label>months</label>
+                        </fieldset>
+                    </td>
+                    <td style="width:20%">
+                        <fieldset formGroupName="lineOfbusiness">
+                            <legend><b>Line of Bussiness</b></legend>
+                            <input type="radio" formControlName="lineofbusiness" value="HMO">HMO
+                            <input type="radio" formControlName="lineofbusiness" value="PPO">PPO
+                            <input type="radio" formControlName="lineofbusiness" value="POS">POS
+                        </fieldset>
+                    </td>
+            </tr>
+        </table>
+        <fieldset formGroupName="set">
+            <legend><b>Set</b></legend>
+            <label>financial responsibility set#:</label>
+            <input formControlName="financialResponsibility" type="text">
+        </fieldset>
+        <fieldset formGroupName="memberFamilyLimit">
+            <legend><b>Member family Limit</b></legend>
+            <fieldset formGroupName="HMO" *ngIf="benefitMasterForm.get('lineOfbusiness').get('lineofbusiness').value=='HMO' || benefitMasterForm.get('lineOfbusiness').get('lineofbusiness').value=='POS'">
+                    <legend><b>HMO</b></legend>
+                    <table>
+                        <tr>
+                            <td>OOP Maximum Member</td>
+                            <td>OOP Maximum Subscriber</td>
+                            <td>Deductable For Member</td>
+                            <td>Deductable For Subscriber</td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" formControlName='oopMaximumMember'></td>
+                            <td><input type="text" formControlName='oopMaximumSubscriber'></td>
+                            <td><input type="text" formControlName='deductableForMember'></td>
+                            <td><input type="text" formControlName='deductableForSubscriber'></td>
+                        </tr>
+                    </table>
+            </fieldset>
+            <fieldset formGroupName="PPO" *ngIf="benefitMasterForm.get('lineOfbusiness').get('lineofbusiness').value=='PPO' || benefitMasterForm.get('lineOfbusiness').get('lineofbusiness').value=='POS'">
+                <legend><b>PPO/POS</b></legend>
+                <table>
+                        <tr>
+                            <td></td>
+                            <td>OOP Maximum Member</td>
+                            <td>OOP Maximum Subscriber</td>
+                            <td>Deductable For Member</td>
+                            <td>Deductable For Subscriber</td>
+                        </tr>
+                        <tr>
+                            <td>In Netword</td>
+                            <td><input type="text" formControlName="inoopMaximumMember"></td>
+                            <td><input type="text" formControlName="inoopMaximumSubscriber"></td>
+                            <td><input type="text" formControlName="indeductableForMember"></td>
+                            <td><input type="text" formControlName="indeductableForSubscriber"></td>
+                        </tr>
+                        <tr>
+                            <td>Out Network</td>
+                            <td><input type="text" formControlName="outoopMaximumMember"></td>
+                            <td><input type="text" formControlName="outoopMaximumSubscriber"></td>
+                            <td><input type="text" formControlName="outoopdeductableMember"></td>
+                            <td><input type="text" formControlName="outoopdeductableSubscriber"></td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <td>
+                                <table>
+                                    <tr>
+                                        <td align="right">OOP Maximum Combined Member:</td>
+                                        <td><input type="text" formControlName="oopMaximumCombinedMember"></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="right">Deductable Combined Member:</td>
+                                        <td><input type="text" formControlName="oopMaximumCombinedSubscriber"></td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td>
+                                <table>
+                                    <tr>
+                                        <td align="right">OOP Maximum Combined Subscriber:</td>
+                                        <td><input type="text" formControlName="deductableCombinedMember"></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="right">Deductable Combined Subscriber:</td>
+                                        <td><input type="text" formControlName="deductableCombinedSubscriber"></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+            </fieldset>
+        </fieldset>
+        <fieldset formGroupName="note">
+            <legend><b>Note</b></legend>
+            <textarea style="width:100%;" formControlName="note" cols="30" rows="10"></textarea>
+        </fieldset>            
+       <button style="margin-left:45%;" mat-raised-button color=warn>Save</button>
+    </form>
+</mat-card>
+

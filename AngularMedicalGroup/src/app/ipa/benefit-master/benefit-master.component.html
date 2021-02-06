@@ -1,0 +1,65 @@
+<form>
+    <mat-card>
+        <mat-card-title>Benefit Master</mat-card-title>
+        <mat-card-content>
+            <table style="width:100%;">
+                <tr align="right">
+                    <table>
+                        <tr>
+                            <td align="right">Health Plan Code:</td>
+                            <td align="left"><input type="text"></td>
+                            <td align="right">Benefit Code:</td>
+                            <td align="left"><input type="text"></td>
+                            <td align="right">Employer Group:</td>
+                            <td align="left"><input type="text"></td>
+                        </tr>
+                        <tr>
+                            <td align="right">Description:</td>
+                            <td align="left"><input type="text"></td>
+                            <td align="right">From Date</td>
+                            <td align="left"><input matInput [matDatepicker]="fromDate">
+                                <mat-datepicker-toggle matSuffix [for]="fromDate"></mat-datepicker-toggle>
+                                <mat-datepicker #fromDate></mat-datepicker></td>
+                            <td align="right">To Date</td>
+                            <td align="left"><input matInput [matDatepicker]="toDate">
+                                <mat-datepicker-toggle matSuffix [for]="toDate"></mat-datepicker-toggle>
+                                <mat-datepicker #toDate></mat-datepicker></td>
+                            <button mat-button color=warn>clear all</button>
+                        </tr>
+                    </table>
+                </tr>
+            </table>
+            <button mat-raised-button color=warn (click)="addbenefit()">Add</button>
+            <button mat-raised-button color=warn>Delete</button>
+            <button mat-raised-button color=warn>Copy Set</button>
+        </mat-card-content>
+    </mat-card>
+</form>
+<table mat-table [dataSource]="benefitMasterData" style="width:100%">
+    <ng-container matColumnDef="healthPlanCode">
+        <th mat-header-cell *matHeaderCellDef>Health Plan Code</th>
+        <td mat-cell *matCellDef="let element">{{element.healthPlanCode}}</td>
+    </ng-container>
+    <ng-container matColumnDef="benefitCode">
+        <th mat-header-cell *matHeaderCellDef>Benefit Code</th>
+        <td mat-cell *matCellDef="let element">{{element.benefitCode}}</td>
+    </ng-container>
+    <ng-container matColumnDef="employerGroup">
+        <th mat-header-cell *matHeaderCellDef>Employer Group</th>
+        <td mat-cell *matCellDef="let element">{{element.employerGroup}}</td>
+    </ng-container>
+    <ng-container matColumnDef="dateRange.effectiveFromDate">
+        <th mat-header-cell *matHeaderCellDef>From Date</th>
+        <td mat-cell *matCellDef="let element">{{element.dateRange.effectiveFromDate}}</td>
+    </ng-container>
+    <ng-container matColumnDef="dateRange.toDate">
+        <th mat-header-cell *matHeaderCellDef>To Date</th>
+        <td mat-cell *matCellDef="let element">{{element.dateRange.toDate}}</td>
+    </ng-container>
+    <ng-container matColumnDef="set.financialResponsibility">
+        <th mat-header-cell *matHeaderCellDef>Financial Responsibility</th>
+        <td mat-cell *matCellDef="let element">{{element.set.financialResponsibility}}</td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
