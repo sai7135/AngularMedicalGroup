@@ -1,0 +1,47 @@
+<mat-card style="width: fit-content;margin-left:30%">
+    <mat-card-title corlor=warn>Register</mat-card-title>
+    
+    <form [formGroup]="registerform" (ngSubmit)="submit()">
+    <table>
+            <tr>
+                <td align="right">User Name:</td>
+                <td><input type="text" formControlName="username"></td>
+                <td *ngIf="registerform.get('username')?.errors?.usernameexist && registerform.get('username').touched"><span color=warn style="color: red;">user name already exist</span></td>
+                    
+            </tr>
+            <tr>
+                <td align="right">Email:</td>
+                <td><input type="text" formControlName="email"></td>
+            </tr>
+            <tr>
+                <td align="right">Password:</td>
+                <td><input type="password" formControlName="password"></td>
+            </tr>
+
+            <tr>
+                <td align="right">Confirm Password:</td>
+                <td><input type="password" formControlName="confirmpassword"></td>
+            </tr>
+            <tr>
+                <td align="right">Role:</td>
+                <td>
+                    
+                    <mat-select formControlName="role">
+                        <mat-option value="admin">
+                        admin
+                        </mat-option>
+                        <mat-option value="users">
+                            users
+                        </mat-option>
+                    </mat-select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <button mat-raised-button color=warn>Submit</button>
+                </td>
+            </tr>
+    </table>
+    
+</form>
+</mat-card>

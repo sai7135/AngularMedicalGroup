@@ -1,0 +1,33 @@
+<mat-toolbar>
+    <mat-toolbar-row>
+        <span>Angular Medical Group</span>
+        <span class="space"></span>
+        <button mat-raised-button (click)="navlink('register')" color=warn *ngIf="isAdmin">Register New User</button>
+        <span class="space-logout"></span>
+        <button mat-raised-button color=warn>support</button>
+        <span class="space-logout"></span>
+        <button mat-raised-button (click)="changepassword()" color=warn>Change Password</button>
+        <span class="space-logout"></span>
+        <button mat-raised-button color=warn (click)="logout()">logout</button>
+    </mat-toolbar-row>
+</mat-toolbar>
+<mat-toolbar class="time-show" color=warn>
+    <span class="mat-subheading-1">{{today|date:"MMMM dd, yyyy hh:mm a"}}</span>
+</mat-toolbar>
+<mat-drawer-container>
+    <mat-drawer class='setscrollstyle' [mode]="'side'" [opened]="open">
+        <mat-accordion [displayMode]="'flat'">
+            <mat-expansion-panel [hideToggle]="'true'" *ngFor="let eachs of values.value">
+                <mat-expansion-panel-header [expandedHeight]="'50px'" [collapsedHeight]="'50px'">
+                    {{eachs.name}}
+                </mat-expansion-panel-header>
+                <mat-action-row *ngFor="let each of eachs.list" (click)="navlink(each.url)" style="color:blue;background-color:aqua;width: 100%;height:10%;"><span style="margin-right:auto;size:10%;user-select: none;">{{each.name}}</span></mat-action-row>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </mat-drawer>
+    <mat-drawer-content>
+        <button (click)="drawer()"><mat-icon>{{open?"arrow_left":"arrow_right"}}</mat-icon></button>
+        <router-outlet></router-outlet>
+    </mat-drawer-content>
+</mat-drawer-container>
+

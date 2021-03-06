@@ -1,0 +1,28 @@
+.space{
+    flex:7 1 auto;
+}
+.space-logout{
+    flex:1 1 auto;
+}
+.time-show{
+    height: fit-content;
+}
+.mat-subheading-1{
+    margin-bottom: 0%;
+}
+mat-panel-title{
+    width:fit-content;
+}
+mat-expansion-panel{
+    width: 18vw;
+}
+mat-list-item{
+    margin: 0% !important;
+    padding:0% !important;
+}
+mat-drawer-container{
+    width:100%;
+    height: 100%;
+}
+
+

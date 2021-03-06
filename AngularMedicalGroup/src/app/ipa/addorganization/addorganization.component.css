@@ -1,0 +1,8 @@
+.ng-invalid.ng-touched{
+    outline-color: red;
+    border-color: red;
+}
+.showinvalidcolumns .ng-invalid{
+    outline-color: red;
+    border-color: red;
+}

@@ -1,0 +1,33 @@
+<table [formGroup]="membersearchfrom">
+    <tr>
+        <td>Total: {{members.length}} </td>
+    </tr>
+    <tr>
+        <td><label for="memberID">Member ID:</label></td>
+        <td><input type="text" id="memberID" formControlName='memberID'></td>
+    </tr>
+    <tr>
+        <td><label for="firstName">First Name:</label></td>
+        <td><input type="text" id="firstName" formControlName='firstName'></td>
+    </tr>
+    <tr>
+        <td><label for="lastName">Last Name:</label></td>
+        <td><input type="text" id="lastName" formControlName='lastName'></td>
+    </tr>
+    <tr>
+        <td><label for="birthDate">Birth Date:</label></td>
+        <td>
+            <app-date-picker-cust type="text" id="birthDate" [pickerref]="dob" formControlName='dob'></app-date-picker-cust>
+            <mat-datepicker-toggle [for]="dob"></mat-datepicker-toggle>
+            <mat-datepicker #dob ></mat-datepicker>
+        </td>
+    </tr>
+    <tr>
+        <td><label for="hp">Health Plan:</label></td>
+        <td><input type="text" id="hp" formControlName='hp'></td>
+    </tr>
+    <tr>
+        <td align="center"><button mat-raised-button color="warn" (click)="search()">Search</button></td>
+        <td align="center"><button mat-raised-button type="button" [mat-dialog-close]="members" color="warn">OK</button></td>
+    </tr>
+</table>

@@ -1,0 +1,25 @@
+<table>
+    <tr>
+        <td><label for="hpPlan">Health Plan:</label></td>
+        <td><input type="text" [(ngModel)]="healthPlan" id="hpPlan"></td>
+        <td><label for="benCode">Benefit Code:</label></td>
+        <td><input type="text" id="benPlan" [(ngModel)]="benefitCode"></td>
+        <td><button (click)="search()">search</button></td>
+    </tr>
+</table>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="width:100%;cursor:pointer">
+    <ng-container matColumnDef="healthPlanCode">
+        <th mat-header-cell *matHeaderCellDef> Health Plan </th>
+        <td mat-cell *matCellDef="let element;index as i;" (click)="hpselected(i)">{{element.healthPlanCode}} </td>
+      </ng-container>
+      <ng-container matColumnDef="benefitCode">
+        <th mat-header-cell *matHeaderCellDef> Benefit Code </th>
+        <td mat-cell *matCellDef="let element;index as i;" (click)="hpselected(i)"> {{element.benefitCode}} </td>
+      </ng-container>
+    <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef> Description </th>
+        <td mat-cell *matCellDef="let element;index as i;" (click)="hpselected(i)"> {{element.description}} </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

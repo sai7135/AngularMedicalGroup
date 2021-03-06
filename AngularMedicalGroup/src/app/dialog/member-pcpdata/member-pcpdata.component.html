@@ -1,0 +1,69 @@
+<table>
+    <tr>
+        <td style="width: 98%;">
+            <h4 mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle>Modify PCP History Records</h4>
+        </td>
+        <td style="width: 2%;">
+            <button mat-icon-button (click)="cancel()"><mat-icon>close</mat-icon></button>
+        </td>
+    </tr>
+</table>
+<mat-dialog-content>
+<table mat-table [dataSource]="PcpData" class="mat-elevation-z8" style="width:100%;">
+    <ng-container matColumnDef="Add">
+        <th mat-header-cell *matHeaderCellDef>Add</th>
+        <td mat-cell  style="width: 15%;" *matCellDef="let element;let i=index"><button  mat-icon-button (click)="add()" color=warn><mat-icon>add</mat-icon></button><button (click)="remove(i)" mat-icon-button color=warn><mat-icon>close</mat-icon></button></td>
+    </ng-container>
+    <ng-container matColumnDef="c">
+        <th mat-header-cell *matHeaderCellDef>C/H</th>
+        <td mat-cell style="width: 5%;"  *matCellDef="let element;let i=index">
+            <mat-select style="width: 10%;" [(ngModel)]="element.c"  style="border:1px solid black;" >
+                <mat-option value="C">C</mat-option>
+                <mat-option value="H">H</mat-option>
+            </mat-select>
+    </ng-container>
+    <ng-container matColumnDef="pcpid" >
+        <th mat-header-cell *matHeaderCellDef>PCP ID</th>
+        <td mat-cell *matCellDef="let element;let i=index"><input type="text" (blur)="chkpcpexist($event.target,i)" style="margin: 10%; width: 50%;"placeholder="F2"  (keydown)="searchPcp($event.key,i)"  [(ngModel)]="element.pcpid"></td>
+    </ng-container>
+    <ng-container matColumnDef="pcpName" style="width:70%;" >
+        <th mat-header-cell *matHeaderCellDef>PCP Name</th>
+        <td mat-cell *matCellDef="let element"> {{element.pcpName}}</td>
+    </ng-container>
+    <ng-container matColumnDef="pcpprimorg">
+        <th mat-header-cell *matHeaderCellDef>PCP Organization</th>
+        <td mat-cell *matCellDef="let element"> <input type="text" style="margin: 10%; width: 80%;" [(ngModel)]="element.pcpprimorg" ></td>
+    </ng-container>
+    <ng-container matColumnDef="maintanancereason">
+        <th mat-header-cell *matHeaderCellDef>Maintannce Reason</th>
+        <td mat-cell *matCellDef="let element"><select [(ngModel)]="element.maintanancereason">
+            <option value="1">select</option>
+        </select></td>
+    </ng-container>
+    <ng-container matColumnDef="pcpfromdt">
+        <th mat-header-cell *matHeaderCellDef>PCP From</th>
+        <td mat-cell *matCellDef="let element"><table><tr>
+                <td style="width: 60%;"><input (blur)="formatDate($event.target)" [(ngModel)]="element.pcpfromdt"  style="width: 80%;"  autocomplete="off" [matDatepicker]="pcpfromdt"></td>
+                    <td style="width: 40%;"><mat-datepicker-toggle [for]="pcpfromdt"></mat-datepicker-toggle>
+                    <mat-datepicker #pcpfromdt ></mat-datepicker></td></tr></table>
+        </td>
+    </ng-container>
+    <ng-container matColumnDef="pcptodt">
+        <th mat-header-cell *matHeaderCellDef>PCP To</th>
+        <td mat-cell *matCellDef="let element"><table><tr>
+            <td style="width: 60%;"><input (blur)="formatDate($event.target)" style="width: 80%;"  [(ngModel)]="element.pcptodt" autocomplete="off" [matDatepicker]="pcptodt"></td>
+            <td style="width: 40%;"><mat-datepicker-toggle [for]="pcptodt"></mat-datepicker-toggle>
+            <mat-datepicker #pcptodt ></mat-datepicker></td></tr></table></td>
+    </ng-container>
+    
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+</mat-dialog-content>
+<table style="width: 100%;">
+    <tr> <td align="right">
+        <button mat-raised-button color="warn" (click)="save()">Save</button></td>
+        <td align="left">
+        <button mat-raised-button color="warn" (click)="cancel()">Cancel</button></td>
+    </tr>
+</table>

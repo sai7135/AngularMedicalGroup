@@ -1,0 +1,46 @@
+<h4>Correct Current HP/Benefit Code</h4>
+    <mat-card *ngFor="let each of DialogData.HealthPlanData">
+        <mat-card-title>New HP/Benefit Code</mat-card-title>
+        <mat-card-content>
+            <table>
+                <tr>
+                    <td>HP+Benefit Code:</td>
+                    <td colspan="2"><input type="text" [value]="each.HP"></td>
+                    <td colspan="3"><input type="text" [value]="each.BenefitCode"></td>
+                </tr>
+                <tr>
+                    <td>Maintanace Reason:</td>
+                    <td colspan="4">
+                    <mat-select>
+                        <mat-option>Select</mat-option>
+                    </mat-select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>HP/Benefit From Date:</td>
+                    <td><app-date-picker-cust type="text"  [value]="each.HealthPlanFromDate" [pickerref]="benffrom"></app-date-picker-cust></td>
+                    <td><mat-datepicker-toggle [for]="benffrom"></mat-datepicker-toggle>
+                        <mat-datepicker #benffrom ></mat-datepicker></td>
+                    <td>To:</td>
+                    <td><app-date-picker-cust type="text" [value]="each.HealthPlanToDate" [pickerref]="benfto"></app-date-picker-cust></td>
+                    <td><mat-datepicker-toggle [for]="benfto"></mat-datepicker-toggle>
+                    <mat-datepicker #benfto ></mat-datepicker></td>
+                </tr>
+                <tr>
+                    <td>Original Hp/Grp Date:</td>
+                    <td><app-date-picker-cust type="text" [pickerref]="orggrpdt"></app-date-picker-cust></td>
+                    <td><mat-datepicker-toggle [for]="orggrpdt"></mat-datepicker-toggle>
+                        <mat-datepicker #orggrpdt ></mat-datepicker></td>
+                </tr>
+                <tr>
+                    <td>Emp Grp</td>
+                    <td colspan="4"><input type="text" placeholder="F2"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td colspan="4"><input type="text" disabled></td>
+                </tr>
+            </table>
+        </mat-card-content>
+    </mat-card>
+
