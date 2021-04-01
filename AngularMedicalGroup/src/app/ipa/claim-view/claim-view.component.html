@@ -1,3 +1,461 @@
-<form>
-    
+<table style="width:100%;">
+    <tr>
+        <td><label>Claim Editing and Resubmission - Sys. Claim ID:{{claimsGroup.value.claimid}} | Version Code: 005010X222A1</label></td><td align="right"><button mat-button color=warn>Close</button></td>
+    </tr>
+</table>
+<table style="width: 100%;">
+<tr>
+    <td><label>Rejection Message</label></td>
+    <td align="right"><button style="width: 2.5vw;height: 2.5vw;" mat-raised-button color=warn><mat-icon>first_page</mat-icon></button><button style="width: 2.5vw;height: 2.5vw;" mat-raised-button color=warn><mat-icon>chevron_left</mat-icon></button><button style="width: 2.5vw;height: 2.5vw;" mat-raised-button color=warn><mat-icon>chevron_right</mat-icon></button><button style="width: 2.5vw;height: 2.5vw;" mat-raised-button color=warn><mat-icon>last_page</mat-icon></button></td>
+</tr>
+</table>
+<form [formGroup]="claimsGroup">
+    <label><b>Patient</b> [NOTE: Patient details cannot be entered/modified when patient relationship is self to insured.]</label>
+    <mat-divider></mat-divider>
+    <table>
+        <tr>
+            <td><label>Last:</label></td>
+            <td><input formControlName="PatientLast" type="text"></td>
+            <td><label>First:</label></td>
+            <td><input formControlName="PatientFirst" type="text"></td>
+            <td><label>Gender:</label></td>
+            <td><select formControlName="PatientGender" ><option value="null">NoneSelected</option><option value="M">Male</option><option value="F">Female</option></select></td>
+            <td><label>DOB:</label></td>
+            <td><input formControlName="PatientDob" type="text" style="width:5vw;" [matDatepicker]="dob"></td>
+            <td>
+            <mat-datepicker-toggle [for]="dob"></mat-datepicker-toggle>
+            <mat-datepicker #dob ></mat-datepicker>
+            </td>
+            <td><label>Other Patient ID:</label>
+            </td><td><input formControlName="OtherPatientId" type="text"></td>
+            <td><label>Date of Death:</label></td>
+            <td><input formControlName="PatientDateOfDeath" type="text" style="width:5vw;" [matDatepicker]="dod"></td>
+            <td>
+            <mat-datepicker-toggle [for]="dod"></mat-datepicker-toggle>
+            <mat-datepicker #dod ></mat-datepicker>
+            </td>
+        </tr>
+    </table>
+    <label><b>Member/Subscriber Details</b></label>
+    <mat-divider></mat-divider>
+    <table>
+        <tr>
+            <td align="right"><label>Health Plan Name:</label></td>
+            <td colspan="2"><input formControlName="SubscriberHealthPlan" type="text"></td>
+            <td align="right"><label>Health Plan ID:</label></td>
+            <td colspan="2"><input formControlName="SubscriberHealthPlanID" type="text"></td>
+        </tr>
+        <tr>
+            <td align="right"><label>Last:</label></td>
+            <td><input formControlName="SubscriberLast"  type="text"></td>
+            <td align="right"><label>First:</label></td>
+            <td><input formControlName="SubscriberFirst" type="text"></td>
+            <td><label>Gender:</label></td>
+            <td><select formControlName="SubscriberGender" ><option value="null">NoneSelected</option><option value="M">Male</option><option value="F">Female</option></select></td>
+            <td align="right"><label>DOB:</label></td>
+            <td><input type="text" formControlName="SubscriberDOB" style="width: 5vw;" [matDatepicker]="sdob"></td>
+            <td>
+            <mat-datepicker-toggle [for]="sdob"></mat-datepicker-toggle>
+            <mat-datepicker #sdob ></mat-datepicker>
+            </td>
+            <td><label align="right">Member ID:</label></td>
+            <td><input formControlName="MemberID" type="text"></td>
+            <td colspan="2"><label align="right">Ext. Auth/Ref #:</label></td>
+            <td><input formControlName="ExtAuthRef" type="text"></td>
+        </tr>
+        <tr>
+            <td  align="right"><label>Group Name:</label></td>
+            <td><input formControlName="SubscriberGroupName"  type="text"></td>
+            <td  align="right"><label>Group#:</label></td>
+            <td><input formControlName="SubscriberGroup" type="text"></td>
+            <td colspan="2"  align="right"><label>Authorization #:</label></td>
+            <td colspan="3"><input formControlName="Auth" type="text"></td>
+            <td colspan="2" align="right"><label>Pat. Rel. to Insured:</label></td>
+            <td><select formControlName="PatRel" >
+                <option value="null">Self(18)</option><option value="01">Spouse(01)</option><option value="19">CHILD(19)</option><option value="20">EMPLOYEE(20)</option><option value="21">Unknown(21)</option><option value="39">Organ Donor(39)</option><option value="40">Cadaver Donor(40)</option><option value="53">Life Partner(53)</option><option value="G8">Other Relationship(G8)</option>
+            </select></td>
+        </tr>
+    </table>
+    <label><b>Provider Information</b></label>
+    <mat-divider></mat-divider>
+    <table>
+        <tr>
+            <td style="vertical-align: top;">
+                <table>
+                    <tr>
+                        <td><label><b>Billing/Org. Provider</b></label></td>
+                    </tr>
+                    <tr>
+                        <td><label>Last:</label></td>
+                        <td><label>First:</label></td>
+                    </tr>
+                    <tr>
+                        <td><input formControlName="BillProvLast" type="text"></td>
+                        <td><input formControlName="BillProvFirst" type="text"></td>
+                    </tr>
+                    <tr>
+                        <td><label>Oth.Billing/Org. Prov.ID:</label></td>
+                    </tr>
+                    <tr>
+                        <td><input formControlName="BillingProvId" type="text"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <table>
+                                <tr>
+                            <td align="right"><label>Address 1:</label></td>
+                            <td><input formControlName="BillingProvAddres1" style="width: 20vw;" type="text"></td>
+                                </tr>
+                            </table>
+                        </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"> 
+                                <table>
+                                    <tr>
+                                <td align="right"><label>Address 2:</label></td>
+                                <td><input formControlName="BillingProvAddres2" style="width: 20vw;" type="text"></td>
+                                    </tr>
+                                </table>
+                            </td>
+                            </tr>
+                    <tr>
+                        <td colspan="2">
+                            <table>
+                                <tr>
+                                    <td><label>City:</label></td>
+                                    <td><input formControlName="BillingProvCity" style="width: 5vw;" type="text"></td>
+                                    <td><label>State:</label></td>
+                                    <td><input formControlName="BillingProvStat" type="text" style="width: 5vw;"></td>
+                                    <td><label>Zip:</label></td>
+                                    <td><input formControlName="BillingProvZip" type="text" style="width: 5vw;"></td>
+                                </tr>
+                                <tr>
+                                    <td><label>NPI:</label></td>
+                                    <td colspan="2"><input formControlName="BillingProviderNpi" type="text"></td>
+                                    <td align="right"><label>Tax ID:</label></td>
+                                    <td colspan="2"><input formControlName="BillingProvTaxid" style="width:7vw" type="text"></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td style="vertical-align: top;">
+                <table>
+                    <tr><td colspan="2"><label><b>*Pay To Address</b></label></td></tr>
+                    <tr><td><input value="1  " formControlName="PtoAisOrgInd" type="radio" name="PtoAisOrgInd"><label>Individual</label></td><td><input value="2  " formControlName="PtoAisOrgInd" type="radio" name="PtoAisOrgInd"><label>Organization</label></td></tr>
+                    <tr><td align="right"><label>Last Name:</label></td><td><input formControlName="PtoALast" type="text"></td></tr>
+                    <tr><td align="right"><label>First Name:</label></td><td><input formControlName="PtoAFirst" type="text"></td></tr>
+                    <tr><td align="right"><label>Address 1:</label></td><td><input formControlName="PtoAAddress1"  type="text"></td></tr>
+                    <tr><td align="right"><label>Address 2:</label></td><td><input formControlName="PtoAAddress2"  type="text"></td></tr>
+                    <tr>
+                        <td colspan="2">
+                            <table>
+                                <tr>
+                                    <td><label>City:</label></td>
+                                    <td><input  formControlName="PtoAAdressCity"  style="width: 5vw;" type="text"></td>
+                                    <td><label>State:</label></td>
+                                    <td><input formControlName="PtoAAdressStat" type="text" style="width: 5vw;"></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Zip:</label></td>
+                                    <td><input formControlName="PtoAAdressZip" type="text" style="width: 5vw;"></td>
+                                    <td><label>NPI:</label></td>
+                                    <td colspan="2"><input type="text"></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <label>*If the Pay To Address is missing then consider <br> BillingProvider Address as the Pay To Address.</label>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td style="vertical-align: top;">
+                <table>
+                    <tr><td colspan="2"><label><b>Rendering Provider</b></label></td></tr>
+                    <tr><td align="right"><label>Last:</label></td><td><input formControlName="RendProvLast" type="text"></td></tr>
+                    <tr><td align="right"><label>First:</label></td><td><input formControlName="RendProvFirst" type="text"></td></tr>
+                    <tr><td align="right"><label>NPI:</label></td><td><input formControlName="RendProvNpi" type="text"></td></tr>
+                    <tr><td align="right"><label>Other Prov.ID:</label></td><td><input formControlName="RendProvOth" type="text"></td></tr>
+                    <tr><td colspan="2"><label><b>Refering Provider</b></label></td></tr>
+                    <tr><td align="right"><label>Last:</label></td><td><input formControlName="RefProvLast" type="text"></td></tr>
+                    <tr><td align="right"><label>First:</label></td><td><input formControlName="RefProvFirst" type="text"></td></tr>
+                    <tr><td align="right"><label>NPI:</label></td><td><input formControlName="RefProvNpi" type="text"></td></tr>
+                    <tr><td align="right"><label>Other Prov.ID:</label></td><td><input formControlName="RefProvNpiOth" type="text"></td></tr>
+                </table>
+            </td>
+            <td style="vertical-align: top;">
+                <table>
+                    <tr><td align="right"><label><b>Facility:</b></label></td><td><select  formControlName="FacilityType"><option value="null">None Selected</option><option value="77 ">Service Location(77)</option></select></td></tr>
+                    <tr><td align="right"><label>Organization:</label></td><td><input formControlName="FacilityOrganizationName" type="text"></td></tr>
+                    <tr><td align="right"><label>Address 1:</label></td><td><input formControlName="FacilityAddress1" type="text"></td></tr>
+                    <tr><td align="right"><label>Address 2:</label></td><td><input formControlName="FacilityAddress2" type="text"></td></tr>
+                    <tr>
+                        <td align="left" colspan="2">
+                            <table>
+                                <tr>
+                                    <td><label>City:</label></td>
+                                    <td><input formControlName="FacilityCity" style="width: 5vw;" type="text"></td>
+                                    <td><label>State:</label></td>
+                                    <td><input formControlName="FacilityState"  type="text" style="width: 5vw;"></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Zip:</label></td>
+                                    <td><input formControlName="FacilityZip" type="text" style="width: 5vw;"></td>
+                                    <td><label>NPI:</label></td>
+                                    <td colspan="2"><input formControlName="FacilityNPI" type="text"></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Other Prov.ID:</label></td>
+                                    <td colspan="3"><input formControlName="FacilityOthProvID" type="text"></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <label><b>Claims</b></label>
+    <mat-divider></mat-divider>
+    <table>
+        <tr>
+            <td style="vertical-align: top;">
+                <table>
+                    <tr>
+                        <td colspan="4"><label><b>General</b></label><mat-divider></mat-divider></td>
+                    </tr>
+                    <tr>
+                        <td align="right"><label>Patient Account No.#:</label></td><td><input formControlName="GenralPatAccuntNo" style="width: 5vw;" type="text"></td>
+                        <td><label>Claim Freq.:</label></td><td><select formControlName="GenralClaimFreq"><option value="null">None Selected</option><option value="1">Admit Through Discharge Claim(1)</option><option value="9">Final Claim for a Health PPS Episode(9)</option><option value="9">Final Claim for a Health PPS Episode(9)</option></select></td>
+                    </tr>
+                    <tr>
+                        <td align="right"><label>Original Ref.#:</label></td><td><input formControlName="GenralOriginalRef" type="text" style="width: 5vw;"></td>
+                        <td colspan="2"><input formControlName="GenralOriginalClaim" type="checkbox"><label>Original Claim # not required / available</label></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input formControlName="AnotherPartyResponsible" type="checkbox"><label>Another Party Responsible</label>
+                        </td>
+                        <td colspan="2">
+                            <input formControlName="EmpRelated" type="checkbox"><label>EmploymentRelated</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input formControlName="OthAcc" type="checkbox"><label>Other Accident</label>
+                        </td>
+                        <td colspan="2">
+                            <input formControlName="AutoAcc" type="checkbox"><label>Auto Accident</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align: top;" colspan="4">
+                            <table>
+                                <tr>
+                                    <td><label>Accident Date:</label></td>
+                                    <td><input formControlName="AccidentDate" type="text" style="width: 5vw;" [matDatepicker]="acsd"></td>
+                                    <td>
+                                        <mat-datepicker-toggle [for]="acsd"></mat-datepicker-toggle>
+                                        <mat-datepicker #acsd ></mat-datepicker>
+                                    </td>
+                                    <td><label>State:</label></td>
+                                    <td><input formControlName="GenralState" type="text" style="width: 5vw;"></td>
+                                    <td><label>Country:</label></td>
+                                    <td><input  formControlName="GenralCountry" type="text" style="width: 5vw;"></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td style="vertical-align: top;">
+                <table>
+                    <tr>
+                        <td colspan="6"><label><b>Dates</b></label><mat-divider></mat-divider></td>
+                    </tr>
+                    <tr>
+                        <td align="right"><label>Last Seen:</label></td><td><input type="text" formControlName="LastSeenDate"  style="width: 5vw;" [matDatepicker]="ls"></td><td><mat-datepicker-toggle [for]="ls"></mat-datepicker-toggle><mat-datepicker #ls ></mat-datepicker></td>
+                        <td align="right"><label>Discharge:</label></td><td><input type="text" formControlName="DischargeDate"  style="width: 5vw;" [matDatepicker]="dsch"></td><td><mat-datepicker-toggle [for]="dsch"></mat-datepicker-toggle><mat-datepicker #dsch ></mat-datepicker></td>
+                    </tr>
+                    <tr>
+                        <td align="right"><label>Illness:</label></td><td><input type="text" formControlName="IllnessDate" style="width: 5vw;" [matDatepicker]="iln"></td><td><mat-datepicker-toggle [for]="iln"></mat-datepicker-toggle><mat-datepicker #iln ></mat-datepicker></td>
+                        <td align="right"><label>Last Worked:</label></td><td><input type="text" formControlName="LastWorkedDate" style="width: 5vw;" [matDatepicker]="lw"></td><td><mat-datepicker-toggle [for]="lw"></mat-datepicker-toggle><mat-datepicker #lw ></mat-datepicker></td>
+                    </tr>
+                    <tr>
+                        <td align="right"><label>Return to Work:</label></td><td><input type="text" formControlName="ReturnToWorkDate" style="width: 5vw;" [matDatepicker]="rtw"></td><td><mat-datepicker-toggle [for]="rtw"></mat-datepicker-toggle><mat-datepicker #rtw ></mat-datepicker></td>
+                        <td align="right"><label>Admission:</label></td><td><input type="text" formControlName="AdmissionDate" style="width: 5vw;" [matDatepicker]="adm"></td><td><mat-datepicker-toggle [for]="adm"></mat-datepicker-toggle><mat-datepicker #adm ></mat-datepicker></td>
+                    </tr>
+                    <tr>
+                        <td align="right"><label>Similar Symptom:</label></td><td><input type="text" formControlName="SimilarSymptomsDate"  style="width: 5vw;" [matDatepicker]="symp"></td><td><mat-datepicker-toggle [for]="symp"></mat-datepicker-toggle><mat-datepicker #symp ></mat-datepicker></td>
+                        <td align="right"><label>Received Date:</label></td><td><input type="text" formControlName="RecevedDate" style="width: 5vw;" [matDatepicker]="rcvdt"></td><td><mat-datepicker-toggle [for]="rcvdt"></mat-datepicker-toggle><mat-datepicker #rcvdt ></mat-datepicker></td>
+                    </tr>
+                </table>
+            </td>
+            <td style="vertical-align: top;">
+                <table>
+                    <tr><td colspan="8"><label><b>Diagnosis Codes (Press F2)</b></label><mat-divider></mat-divider></td></tr>
+                    <tr>
+                        <td><label>1.</label></td><td><input formControlName="DiagCode1" type="text" style="width:5vw;"></td>
+                        <td><label>2.</label></td><td><input formControlName="DiagCode2" type="text" style="width:5vw;"></td>
+                        <td><label>3.</label></td><td><input formControlName="DiagCode3" type="text" style="width:5vw;"></td>
+                        <td><label>4.</label></td><td><input formControlName="DiagCode4" type="text" style="width:5vw;"></td>
+                    </tr>
+                    <tr>
+                        <td><label>5.</label></td><td><input formControlName="DiagCode5" type="text" style="width:5vw;"></td>
+                        <td><label>6.</label></td><td><input formControlName="DiagCode6" type="text" style="width:5vw;"></td>
+                        <td><label>7.</label></td><td><input formControlName="DiagCode7" type="text" style="width:5vw;"></td>
+                        <td><label>8.</label></td><td><input formControlName="DiagCode8" type="text" style="width:5vw;"></td>
+                    </tr>
+                    <tr>
+                        <td><label>9.</label></td><td><input formControlName="DiagCode9" type="text" style="width:5vw;"></td>
+                        <td><label>10.</label></td><td><input formControlName="DiagCode10" type="text" style="width:5vw;"></td>
+                        <td><label>11.</label></td><td><input formControlName="DiagCode11" type="text" style="width:5vw;"></td>
+                        <td><label>12.</label></td><td><input formControlName="DiagCode12" type="text" style="width:5vw;"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td style="vertical-align: top;">
+                <table>
+                    <tr>
+                        <td colspan="4"><label><b>Ambulance Transport Information</b><mat-divider></mat-divider> </label></td>
+                    </tr>
+                    <tr>
+                        <td><label>Patient Weight:</label></td>
+                        <td><input formControlName="AmbPatWeight" style="width:5vw" type="text"></td>
+                        <td><label>Reason Code:</label></td>
+                        <td><select formControlName="ReasonCode"><option value="null">None Selected</option></select></td>
+                    </tr>
+                    <tr>
+                        <td><label>Transport Distance:</label></td>
+                        <td><input formControlName="TransportDistance" style="width: 5vw;" type="text"></td>
+                    </tr>
+                </table>
+            </td>
+            <td style="vertical-align: top;">
+                <table>
+                    <tr>
+                        <td colspan="4"><label><b>Ambulance Pickup Location</b><mat-divider></mat-divider> </label></td>
+                    </tr>
+                    <tr>
+                        <td><label>Address1:</label></td>
+                        <td><input formControlName="AmbPikAdd1" type="text"></td>
+                        <td><label>Address2:</label></td>
+                        <td><input  formControlName="AmbPikAdd2"  type="text"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <table>
+                                <tr>
+                                    <td><label>City:</label></td>
+                                    <td><input formControlName="AmbPikCity" style="width: 5vw;" type="text"></td>
+                                    <td><label>State:</label></td>
+                                    <td><input formControlName="AmbPikSt" style="width: 5vw;" type="text"></td>
+                                    <td><label>Zip:</label></td>
+                                    <td><input formControlName="AmbPikZip" style="width: 5vw;" type="text"></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td style="vertical-align: top;">
+                <table>
+                    <tr>
+                        <td colspan="4"><label><b>Ambulance Drop Location</b><mat-divider></mat-divider> </label></td>
+                    </tr>
+                    <tr>
+                        <td><label>Address1:</label></td>
+                        <td><input formControlName="AmbDrpAdd1"  type="text"></td>
+                        <td><label>Address2:</label></td>
+                        <td><input formControlName="AmbDrpAdd2"  type="text"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <table>
+                                <tr>
+                                    <td><label>City:</label></td>
+                                    <td><input formControlName="AmbDrpCity" style="width: 5vw;" type="text"></td>
+                                    <td><label>State:</label></td>
+                                    <td><input  formControlName="AmbDrpSt" style="width: 5vw;" type="text"></td>
+                                    <td><label>Zip:</label></td>
+                                    <td><input formControlName="AmbDrpZip" style="width: 5vw;" type="text"></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td><label><b>Place of Service:</b></label></td>
+            <td><select formControlName="POS">
+                <option value="null">None Selected</option>
+                <option value="1">01-Pharmacy</option>
+                <option value="2">02-Telehealth</option>
+                <option value="4">04-Homeless Shelter</option>
+                <option value="6">06-Indian Health service provider-based facility</option>
+                <option value="9">09-Prison Correctional Facility</option>
+                <option value="12">12-Home</option>
+                <option value="11">11-Office</option>
+                <option value="13">12-Assignment Living Facility</option>
+                <option value="14">14-Group Home</option>
+                <option value="15">15-Mobile Unit</option>
+                <option value="17">17-Walk in Retail Health Clinic</option>
+                <option value="18">18-Long Term Acute Hospital</option>
+                <option value="19">19-Off Campus-Outpatient Hospital</option>
+                <option value="20">20-Urgent Care Facility</option>
+                <option value="21">21-Inpatient Hospital</option>
+                <option value="22">22-OnCampus Out Patient Hospital</option>
+                <option value="23">23 - EMERGENCY ROOM HOSPITAL</option>
+                <option value="24">24-Ambulatory Surgical Center</option>
+                <option value="31">31-Skilled Nursing Facility</option>
+                <option value="32">32-Nursing Facility</option>
+                <option value="33">33-Custodial Care Facility</option>
+                <option value="34">34-Hospice</option>
+                <option value="40">40-Patient's Home</option>
+                <option value="41">41-Ambulance Land</option>
+                <option value="42">42-Ambulance-Air or Water</option>
+                <option value="49">49-Indipendent Clinic</option>
+                <option value="50">50-Fedrally Qualified Health Care</option>
+                <option value="51">51-Inpatient Psycartic Facility</option>
+                <option value="52">52-Psychartic Facility-Partial Hospitalization</option>
+                <option value="53">53-Community Mental Health Center</option>
+                <option value="55">55-Resedential substance abuse treatment facility</option>
+                <option value="56">56-Psychartic Residential Treatment Center</option>
+                <option value="57">57-Non-Residential substance abuse treatment facility</option>
+                <option value="60">60-Mass Immunization Center</option>
+                <option value="61">61-Comprehensive Inpatient Rehablitation Facility</option>
+                <option value="62">62-Comprehensive Outpatient Rehablitation Facility</option>
+                <option value="65">65-END-Stage Renal Disease Treatment Facility</option>
+                <option value="71">71-Public Health Clinic</option>
+                <option value="72">72-Rural Health Clinic</option>
+                <option value="81">81-Indipendent Laboratory</option>
+                <option value="90">9-Ambulance</option>
+                <option value="99">99-Other Place Of Service</option>
+                <option value="A">A-Indipendent Laboratory</option>
+                <option value="AM">AM-Non EMERGENCY Ambulance-wc</option>
+                <option value="DM">DM-Medical Supply(DME)</option>
+                <option value="IP">IP-INPATIENT PRE CERTIFIED</option>
+                <option value="LT">LT-LONG TERM CARE FACILITY</option>
+                <option value="O">O-OTHER LOCATIONS</option>
+                <option value="OP">OP-OUTPATIENT OBSERVATION</option>
+                <option value="SA">SA-SUB ACUTE FACILITY</option>
+            </select></td>
+            <td><label>Total Charge:</label></td>
+            <td><input formControlName="TotalChrg" type="text"></td>
+            <td><label>Patient Paid:</label></td>
+            <td><input formControlName="PatPaid" type="text"></td>
+            <td><label>Payer Paid Amt:</label></td>
+            <td><input formControlName="PayerPaidAmt" type="text"></td>
+        </tr>
+    </table>
 </form>

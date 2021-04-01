@@ -17,9 +17,13 @@ namespace EDIToDBLoaderService
     {
         private readonly Timer _timer;
         public EDIToDb() {
-            _timer = new Timer(36000000) { AutoReset = true };
-            _timer.Elapsed += SaveData;
+            _timer = new Timer(900000) { AutoReset = true };
+            _timer.Elapsed +=new ElapsedEventHandler(SaveData) ;
+            _timer.Enabled = true;
+            _timer.Start();
         }
+
+      
 
         private void SaveData(object sender, ElapsedEventArgs e)
         {
@@ -34,6 +38,25 @@ namespace EDIToDBLoaderService
                 {
                     InsertClaim(ediModel,Int32.Parse(Path.GetFileNameWithoutExtension(file.Name)));
                 }
+                using (SqlConnection con = new SqlConnection(@"data source=CAPTIVATESOFT2\MSSQLSERVER01; database = EDIDatabase ;User id=saikiran;Password=1SAI23kiran@!;Trusted_Connection=False;MultipleActiveResultSets=true;"))
+                {
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand("SpinsertClaims", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Fileid", Path.GetFileNameWithoutExtension(file.Name));
+                    cmd.ExecuteNonQuery();
+                }
+                using (SqlConnection con = new SqlConnection(@"data source=CAPTIVATESOFT2\MSSQLSERVER01; database = EDIDatabase ;User id=saikiran;Password=1SAI23kiran@!;Trusted_Connection=False;MultipleActiveResultSets=true;"))
+                {
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand("SpInsertClaimServ", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Fileid", Path.GetFileNameWithoutExtension(file.Name));
+                    cmd.ExecuteNonQuery();
+                }
+                sr.Dispose();
+                sr.Close();
+                File.Delete(path + @"\" + file.Name);
             }
         }
         public void InsertClaim(EDIModel model, int fileid)
@@ -46,7 +69,7 @@ namespace EDIToDBLoaderService
                     {
                         if (transaction.actualsegmentcount == transaction.SE.SE1)
                         {
-                            using (SqlConnection con = new SqlConnection(@"data source=CAPTIVATESOFT2\MSSQLSERVER01; database = EDIDatabase ; integrated security=SSPI"))
+                            using (SqlConnection con = new SqlConnection(@"data source=CAPTIVATESOFT2\MSSQLSERVER01; database = EDIDatabase ;User id=saikiran;Password=1SAI23kiran@!;Trusted_Connection=False;MultipleActiveResultSets=true;"))
                             {
                                 con.Open();
                                 SqlCommand cmd = new SqlCommand("spinsertEDIHeader", con);
@@ -89,7 +112,7 @@ namespace EDIToDBLoaderService
                             }
                             foreach (BillingProvider billingProvder in transaction.BillingProvider)
                             {
-                                using (SqlConnection con = new SqlConnection(@"data source=CAPTIVATESOFT2\MSSQLSERVER01; database = EDIDatabase ; integrated security=SSPI"))
+                                using (SqlConnection con = new SqlConnection(@"data source=CAPTIVATESOFT2\MSSQLSERVER01; database = EDIDatabase ;User id=saikiran;Password=1SAI23kiran@!;Trusted_Connection=False;MultipleActiveResultSets=true;"))
                                 {
                                     con.Open();
                                     SqlCommand cmd = new SqlCommand("spinsertBillingprovider", con);
@@ -199,7 +222,7 @@ namespace EDIToDBLoaderService
                                 }
                                 for (int i = 0; i < billingProvder.subscriber.Length; i++)
                                 {
-                                    using (SqlConnection con = new SqlConnection(@"data source=CAPTIVATESOFT2\MSSQLSERVER01; database = EDIDatabase ; integrated security=SSPI"))
+                                    using (SqlConnection con = new SqlConnection(@"data source=CAPTIVATESOFT2\MSSQLSERVER01; database = EDIDatabase ;User id=saikiran;Password=1SAI23kiran@!;Trusted_Connection=False;MultipleActiveResultSets=true;"))
                                     {
                                         con.Open();
                                         SqlCommand cmd = new SqlCommand("spinsertsubscriber", con);
@@ -307,7 +330,7 @@ namespace EDIToDBLoaderService
                                     insertClaim(billingProvder.subscriber[i].Claim, fileid, transaction, billingProvder.subscriber[i].SubscriberDetails.NM1.NM19, billingProvder.subscriber[i].HL.HL1);
                                     for (int j = 0; j < billingProvder.subscriber[i].patient.Length; j++)
                                     {
-                                        using (SqlConnection con = new SqlConnection(@"data source=CAPTIVATESOFT2\MSSQLSERVER01; database = EDIDatabase ; integrated security=SSPI"))
+                                        using (SqlConnection con = new SqlConnection(@"data source=CAPTIVATESOFT2\MSSQLSERVER01; database = EDIDatabase ;User id=saikiran;Password=1SAI23kiran@!;Trusted_Connection=False;MultipleActiveResultSets=true;"))
                                         {
                                             con.Open();
                                             SqlCommand cmd = new SqlCommand("spinsertpatient", con);
@@ -364,7 +387,7 @@ namespace EDIToDBLoaderService
             for (int k = 0; k < claims.Length; k++)
             {
                 string claimid = "-1";
-                using (SqlConnection con = new SqlConnection(@"data source=CAPTIVATESOFT2\MSSQLSERVER01; database = EDIDatabase ; integrated security=SSPI"))
+                using (SqlConnection con = new SqlConnection(@"data source=CAPTIVATESOFT2\MSSQLSERVER01; database = EDIDatabase ;User id=saikiran;Password=1SAI23kiran@!;Trusted_Connection=False;MultipleActiveResultSets=true;"))
                 {
                     con.Open();
                     SqlCommand cmd = new SqlCommand("spinsertclaim", con);
@@ -949,7 +972,7 @@ namespace EDIToDBLoaderService
                 }
                 for (int l = 0; l < claims[k].otherSubscriberDetails.Length; l++)
                 {
-                    using (SqlConnection con = new SqlConnection(@"data source=CAPTIVATESOFT2\MSSQLSERVER01; database = EDIDatabase ; integrated security=SSPI"))
+                    using (SqlConnection con = new SqlConnection(@"data source=CAPTIVATESOFT2\MSSQLSERVER01; database = EDIDatabase ;User id=saikiran;Password=1SAI23kiran@!;Trusted_Connection=False;MultipleActiveResultSets=true;"))
                     {
                         con.Open();
                         SqlCommand cmd = new SqlCommand("spinsertothersubscriber", con);
@@ -1308,7 +1331,7 @@ namespace EDIToDBLoaderService
                 for (int l = 0; l < claims[k].ServiceLine.Length; l++)
                 {
                     string servicelineid = "-1";
-                    using (SqlConnection con = new SqlConnection(@"data source=CAPTIVATESOFT2\MSSQLSERVER01; database = EDIDatabase ; integrated security=SSPI"))
+                    using (SqlConnection con = new SqlConnection(@"data source=CAPTIVATESOFT2\MSSQLSERVER01; database = EDIDatabase ;User id=saikiran;Password=1SAI23kiran@!;Trusted_Connection=False;MultipleActiveResultSets=true;"))
                     {
                         con.Open();
                         SqlCommand cmd = new SqlCommand("spinsertserviceline", con);
@@ -1737,7 +1760,7 @@ namespace EDIToDBLoaderService
                     for (int m = 0; m < claims[k].ServiceLine[l].formIdentificationCode.Length; m++)
                     {
                         string formidentificationid = "-1";
-                        using (SqlConnection con = new SqlConnection(@"data source=CAPTIVATESOFT2\MSSQLSERVER01; database = EDIDatabase ; integrated security=SSPI"))
+                        using (SqlConnection con = new SqlConnection(@"data source=CAPTIVATESOFT2\MSSQLSERVER01; database = EDIDatabase ;User id=saikiran;Password=1SAI23kiran@!;Trusted_Connection=False;MultipleActiveResultSets=true;"))
                         {
                             con.Open();
                             SqlCommand cmd = new SqlCommand("spinsertformidentification", con);
@@ -1763,7 +1786,7 @@ namespace EDIToDBLoaderService
                         }
                         for (int n = 0; n < claims[k].ServiceLine[l].formIdentificationCode[m].FRM.Length; n++)
                         {
-                            using (SqlConnection con = new SqlConnection(@"data source=CAPTIVATESOFT2\MSSQLSERVER01; database = EDIDatabase ; integrated security=SSPI"))
+                            using (SqlConnection con = new SqlConnection(@"data source=CAPTIVATESOFT2\MSSQLSERVER01; database = EDIDatabase ;User id=saikiran;Password=1SAI23kiran@!;Trusted_Connection=False;MultipleActiveResultSets=true;"))
                             {
                                 con.Open();
                                 SqlCommand cmd = new SqlCommand("spinsertsupportdoc", con);
@@ -1782,6 +1805,7 @@ namespace EDIToDBLoaderService
             }
         }
         public void start() {
+            _timer.Enabled = true;
             _timer.Start();
         }
         public void stop() {

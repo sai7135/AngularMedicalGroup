@@ -62,6 +62,19 @@ namespace DataBase
                 throw;
             }
         }
+        public async Task<List<ClaimsData>> GetClaimData(string claimid) {
+            try
+            {
+                using (EDIDatabase db = new EDIDatabase()) {
+
+                    List<ClaimsData> cd=db.Database.SqlQuery<ClaimsData>("spGetClaimData "+ claimid).ToList();
+                    return cd;
+                }
+            }
+            catch (Exception e) {
+                throw;
+            }
+        }
         public async Task<MemberPCPModel[]> GetMemberPcps(string memberid, string healthplan) {
             using (SqlConnection con = new SqlConnection(@"data source=CAPTIVATESOFT2\MSSQLSERVER01; database = EDIDatabase ; integrated security=SSPI"))
             {
@@ -955,7 +968,7 @@ namespace DataBase
                                 clmid = "" + r["claimid"],
                                 memberid = "" + r["L2010BA_1_NM1_1_NM109"],
                                 membername = "" + r["L2010BA_1_NM1_1_NM104"] + " " + r["L2010BA_1_NM1_1_NM103"],
-                                dob = dob.Substring(6, 2) + "/" + dob.Substring(4, 2) + "/" + dob.Substring(0, 4),
+                                dob = dob,
                                 renderingprovider = "" + r["L2310B_1_NM1_1_NM104"] + " " + r["L2310B_1_NM1_1_NM103"],
                                 billedamount = "" + r["L2300_1_CLM_1_CLM02"]
                             });

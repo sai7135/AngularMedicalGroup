@@ -44,5 +44,6 @@ namespace DataBase
         void spinsertpatient(string transactionid, string subscriberloopid, string loopid, string lastname, string firstname, string patientid, string address1, string address2, string city, string state, string postalcode,string dob,string gender);
 
         Task AddBenefitMaster(BenefitMasterModel model);
+        Task<List<ClaimsData>> GetClaimData(string claimid);
     }
 }

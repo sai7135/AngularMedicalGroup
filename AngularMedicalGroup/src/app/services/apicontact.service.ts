@@ -13,6 +13,7 @@ import {Provider} from '../models/provider.model';
 import {BenefitMasterModel} from '../models/benefitmaster.model';
 import { ClaimsTable } from '../models/claimstable.model';
 import {Members} from '../models/member.model';
+import {ClaimData} from '../models/ClaimsData.model';
 import {PcpSearchResult} from '../models/pcpsearchresult.model';
 import {saveAs} from 'file-saver';
 import {HPTableData,MemberHPdataComponent} from '../dialog/member-hpdata/member-hpdata.component';
@@ -33,6 +34,9 @@ export class ApicontactService {
     }).subscribe(data=>{
       saveAs(new Blob([data],{type:'text/plain'}),fileid+".txt");
     });
+  }
+  public getClaimsData(claimid:string):Observable<ClaimData>{
+    return this.http.get<ClaimData>(apilink+"Users/GetClaimsData?claimid="+claimid)
   }
   public getMemberPCPs(memberId:string,healthPlan:string):Observable<PcpTableData[]>{
     return this.http.get<PcpTableData[]>(apilink+"Users/getPCPs?memberid="+memberId+"&healthplan="+healthPlan)

@@ -162,8 +162,10 @@ namespace Angular_API.Controllers
             string xmlfilepath = EdiToXml(filePath);
             string xmlfilename = System.IO.Path.GetFileName(xmlfilepath);
             string destination = System.IO.Path.Combine(@"C:\Users\saikiran\Documents\EDIFile\forjob",xmlfilename);
+            string destination2 = System.IO.Path.Combine(@"C:\Users\saikiran\Documents\EDIFile\convertedxml", xmlfilename);
             File.Copy(xmlfilepath,destination,true);
-            await this.DeserializeanExecute(xmlfilepath, fileid);
+            File.Copy(xmlfilepath, destination2, true);
+            //await this.DeserializeanExecute(xmlfilepath, fileid);
             return Ok();
         }
         [HttpGet]
@@ -172,7 +174,12 @@ namespace Angular_API.Controllers
             ClaimsTableModel[] model = await _db.GetAllClaims();
             return Ok(model);
         }
-
+        [HttpGet]
+        [Route("GetClaimsData")]
+        public async Task<IHttpActionResult> GetClaimsData(string claimid) {
+            List<ClaimsData> cd = await _db.GetClaimData(claimid);
+            return Ok(cd);
+        }
         async Task DeserializeanExecute(string xmlFilePath, int fileid)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(EDIModel));

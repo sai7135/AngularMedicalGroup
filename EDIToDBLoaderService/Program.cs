@@ -24,7 +24,7 @@ namespace EDIToDBLoaderService
 
                 });
                 x.RunAsLocalSystem();
-                x.SetServiceName("AngularMedicalGroup");
+                x.SetServiceName("MYIPA");
                 x.SetDisplayName("Angular Medical Group");
                 x.SetDescription("For Dumping EDI data to Database Server");
             });
