@@ -113,5 +113,6 @@ namespace DataBase.Models
         public string AmbDrpCity { get; set; }
         public string AmbDrpSt { get; set; }
         public string AmbDrpZip { get; set; }
+        public List<ClaimServiceLindeModel> servicelines { get; set; }
     }
 }

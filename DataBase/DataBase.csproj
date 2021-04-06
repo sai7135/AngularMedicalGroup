@@ -59,6 +59,7 @@
     <Compile Include="Models\AddressModel.cs" />
     <Compile Include="Models\BenefitMasterModel.cs" />
     <Compile Include="Models\ClaimsData.cs" />
+    <Compile Include="Models\ClaimServiceLindeModel.cs" />
     <Compile Include="Models\ClaimsTableModel.cs" />
     <Compile Include="Models\EDIModel.cs" />
     <Compile Include="Models\MemberHealthPlanModel.cs" />

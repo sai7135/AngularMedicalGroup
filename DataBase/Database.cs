@@ -68,6 +68,7 @@ namespace DataBase
                 using (EDIDatabase db = new EDIDatabase()) {
 
                     List<ClaimsData> cd=db.Database.SqlQuery<ClaimsData>("spGetClaimData "+ claimid).ToList();
+                    cd[0].servicelines = db.Database.SqlQuery<ClaimServiceLindeModel>("spGetServLines "+claimid).ToList();
                     return cd;
                 }
             }

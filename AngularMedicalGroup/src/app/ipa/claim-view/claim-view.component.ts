@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, FormArray } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ApicontactService } from 'src/app/services/apicontact.service';
 
@@ -14,6 +14,30 @@ export class ClaimViewComponent implements OnInit {
       this.activeRoute.queryParams.subscribe(data=>{
         comm.getClaimsData(data["claimid"]).subscribe(r=>{
           console.log(r[0])
+          for(var srv in r[0].servicelines){
+            (<FormArray>this.claimsGroup.get("servicelines")).push(new FormGroup({
+              'ClmSrvid':new FormControl(),
+              'SrvFrmdt':new FormControl(),
+              'SrvTodt':new FormControl(),
+              'Pos':new FormControl(),
+              'ProcCode':new FormControl(),
+              'Modfi1':new FormControl(),
+              'Modfi2':new FormControl(),
+              'Modfi3':new FormControl(),
+              'Modfi4':new FormControl(),
+              'DiaPoint1':new FormControl(),
+              'DiaPoint2':new FormControl(),
+              'DiaPoint3':new FormControl(),
+              'DiaPoint4':new FormControl(),
+              'BilledCharg':new FormControl(),
+              'UnitType':new FormControl(),
+              'Quantity':new FormControl(),
+              'Emg':new FormControl(),
+              'EPSDT':new FormControl(),
+              'FamPlan':new FormControl(),
+              'NDC':new FormControl()
+            }))
+          }
           this.claimsGroup.setValue(r[0]);
         })
       })
@@ -123,8 +147,12 @@ export class ClaimViewComponent implements OnInit {
       'AmbDrpAdd2':new FormControl(),
       'AmbDrpCity':new FormControl(),
       'AmbDrpSt':new FormControl(),
-      'AmbDrpZip':new FormControl()
+      'AmbDrpZip':new FormControl(),
+      'servicelines':new FormArray([])
     })
+  }
+  close(){
+    window.close();
   }
 
 }

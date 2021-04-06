@@ -1,4 +1,4 @@
-
+import {ServiceLine} from './ClaimServiceLine.model';
 
 export class ClaimData{
     public claimid:bigint;
@@ -104,4 +104,5 @@ export class ClaimData{
     public AmbDrpCity:string;
     public AmbDrpSt:string;
     public AmbDrpZip:string;
+    public servicelines:ServiceLine[];
 }

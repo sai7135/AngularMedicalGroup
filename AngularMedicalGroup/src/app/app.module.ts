@@ -11,11 +11,13 @@ import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { AuthInterceptService } from './services/auth-intercept.service';
 import { NavbarvaluesService,navbartoken } from './ipa/navbar/navbarvalues.service';
 import { PortalModule } from '@angular/cdk/portal';
+import { ClaimListingComponent } from './ipa/claim-listing/claim-listing.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    IpaComponent
+    IpaComponent,
+    ClaimListingComponent
   ],
   imports: [
     BrowserModule,

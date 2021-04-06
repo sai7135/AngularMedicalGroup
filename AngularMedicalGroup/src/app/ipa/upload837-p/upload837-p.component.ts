@@ -3,8 +3,6 @@ import {ApicontactService} from '../../services/apicontact.service';
 import {MatDialog} from '@angular/material/dialog';
 import { MessageComponent } from 'src/app/dialog/message/message.component';
 import { CommunicateService } from '../../services/communicate.service';
-import { ClaimsTable } from 'src/app/models/claimstable.model';
-import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-upload837-p',
@@ -12,8 +10,6 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./upload837-p.component.css']
 })
 export class Upload837PComponent implements OnInit {
-  displayedColumns:string[];
-  claimsData:MatTableDataSource<ClaimsTable>;
   constructor(private api:ApicontactService,private dialog:MatDialog,private comm:CommunicateService)
    {
 
@@ -22,15 +18,9 @@ export class Upload837PComponent implements OnInit {
   @ViewChild("fileUpload") fileUpload;
   @ViewChild("filename") fileName;
   ngOnInit(): void {
-    this.api.getAllClaims().subscribe(r=>{
-      this.claimsData=new MatTableDataSource<ClaimsTable>();
-      this.claimsData.data=r;
-    })
-    this.displayedColumns=["fileID","clmid","memberid","membername","dob","renderingprovider","claimNo","dcn","billedamount","tradingPartner","uploadDate"];
+    
   }
-  downloadfile(fileid:string){
-    this.api.getfiletext(fileid);
-  }
+  
   browseedi(){
     this.fileUpload.nativeElement.click();
   }

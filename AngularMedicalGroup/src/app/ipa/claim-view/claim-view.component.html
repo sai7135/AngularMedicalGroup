@@ -1,6 +1,6 @@
 <table style="width:100%;">
     <tr>
-        <td><label>Claim Editing and Resubmission - Sys. Claim ID:{{claimsGroup.value.claimid}} | Version Code: 005010X222A1</label></td><td align="right"><button mat-button color=warn>Close</button></td>
+        <td><label>Claim Editing and Resubmission - Sys. Claim ID:{{claimsGroup.value.claimid}} | Version Code: 005010X222A1</label></td><td align="right"><button mat-button (click)="close()" color=warn>Close</button></td>
     </tr>
 </table>
 <table style="width: 100%;">
@@ -298,7 +298,8 @@
             </td>
             <td style="vertical-align: top;">
                 <table>
-                    <tr><td colspan="8"><label><b>Diagnosis Codes (Press F2)</b></label><mat-divider></mat-divider></td></tr>
+                    <tr><td colspan="7"><label><b>Diagnosis Codes (Press F2)</b></label></td><td><label style="color: green;">ICD Ind. |0|</label></td></tr>
+                    <tr><td colspan="8"><mat-divider></mat-divider></td></tr>
                     <tr>
                         <td><label>1.</label></td><td><input formControlName="DiagCode1" type="text" style="width:5vw;"></td>
                         <td><label>2.</label></td><td><input formControlName="DiagCode2" type="text" style="width:5vw;"></td>
@@ -456,6 +457,31 @@
             <td><input formControlName="PatPaid" type="text"></td>
             <td><label>Payer Paid Amt:</label></td>
             <td><input formControlName="PayerPaidAmt" type="text"></td>
+        </tr>
+    </table>
+    <label><b>Service Line Information</b></label>
+    <mat-divider></mat-divider>
+    <table formArrayName="servicelines" style="width: 100%;">
+        <tr><th>#</th><th>Service From</th><th>ServiceTo</th><th>Place of Service</th><th>Procedure Code (PressF2)</th><th>Modifier(s) (Press F2)</th><th>Diagnosis Pointers</th><th>Billed Charges($)</th><th>Quantity</th><th>Unit Type</th><th>Emg</th><th>EPSDT</th><th>Fam Plan</th><th>NDC</th></tr>
+        <tr *ngFor="let serv of claimsGroup.get('servicelines')['controls'];let i=index" [formGroupName]="i">
+            <td><label>{{i+1}}</label></td>
+            <td><input type="text" style="width: 5vw;" formControlName="SrvFrmdt"[matDatepicker]="SrvFrmdt">
+            <mat-datepicker-toggle [for]="SrvFrmdt"></mat-datepicker-toggle>
+            <mat-datepicker #SrvFrmdt ></mat-datepicker></td>
+            <td><input type="text" style="width: 5vw;" formControlName="SrvTodt"[matDatepicker]="SrvTodt">
+                <mat-datepicker-toggle [for]="SrvTodt"></mat-datepicker-toggle>
+                <mat-datepicker #SrvTodt ></mat-datepicker></td>
+            <td><input type="text" style="width: 5vw;" formControlName="Pos"></td>
+            <td><input type="text" formControlName="ProcCode"></td>
+            <td><table style="width: 100%;"><tr><td><input type="text" formControlName="Modfi1" style="width: 1vw;"></td><td><input type="text" formControlName="Modfi2" style="width: 1vw;"></td><td><input type="text" formControlName="Modfi3" style="width: 1vw;"></td><td><input type="text" formControlName="Modfi4" style="width: 1vw;"></td></tr></table></td>
+            <td><table style="width: 100%;"><tr><td><input type="text" formControlName="DiaPoint1" style="width: 1vw;"></td><td><input type="text" formControlName="DiaPoint2" style="width: 1vw;"></td><td><input type="text" formControlName="DiaPoint3" style="width: 1vw;"></td><td><input type="text" formControlName="DiaPoint4" style="width: 1vw;"></td></tr></table></td>
+            <td><input type="text" style="width: 4vw;" formControlName="BilledCharg"></td>
+            <td><input type="text" style="width: 4vw;" formControlName="Quantity"></td>
+            <td><input type="text" style="width:4vw;" formControlName="UnitType"></td>
+            <td><input type="checkbox" formControlName="Emg"></td>
+            <td><input type="checkbox" formControlName="EPSDT"></td>
+            <td><input type="checkbox" formControlName="FamPlan"></td>
+            <td><input type="text" formControlName="NDC"></td>
         </tr>
     </table>
 </form>
