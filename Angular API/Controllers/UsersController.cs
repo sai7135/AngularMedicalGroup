@@ -30,6 +30,12 @@ namespace Angular_API.Controllers
             return Ok(context.GetUserName());
         }
         [HttpPost]
+        [Route("GetFileData")]
+        public async Task<IHttpActionResult> GetFileData(FileDataSearchModel searchData) {
+            List<FileDataModel> fd = await _db.GetFileData(searchData);
+            return Ok(fd);
+        }
+        [HttpPost]
         [Route("postPCPs")]
         public async Task<IHttpActionResult> SaveAllPCPs([FromUri]String memberid, [FromUri]String healthplan, [FromBody]MemberPCPModel[] pcps)
         {
@@ -80,7 +86,12 @@ namespace Angular_API.Controllers
             MemberHealthPlanModel[] data =await _db.GetMemberHealthPlans(memberid, healthplan);
             return Ok(data);
         }
-       
+        [HttpPost]
+        [Route("searchMemberClaim")]
+        public async Task<IHttpActionResult> GetMembers(MemberSearchModel msm) {
+            List<MemberSearchResult> data = await _db.SearchMember(msm);
+            return Ok(data);
+        }
         [HttpPost]
         [Route("createMember")]
         public async Task<IHttpActionResult> CreateMember(MembersModel model) {

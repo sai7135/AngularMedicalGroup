@@ -23,12 +23,14 @@
                 </td>
                 <td>
                     <fieldset>
-                        <legend><b>Search 837P Fields</b></legend>
-                        <table style="table-layout:fixed;width:100%;">
-                            <tr><td><label style="width:100%;">File Id:</label></td><td ><input style="width:100%;"  type="text"></td><td><label style="width:100%;">Upload Dates:</label></td><td><select style="width:100%;"><option>10 Days</option><option>6 Months</option><option>2 Years</option></select></td><td><input style="width:100%;" type="text" [matDatepicker]="fromdate" disabled></td><td><mat-datepicker-toggle [for]="fromdate"></mat-datepicker-toggle><mat-datepicker #fromdate ></mat-datepicker><label>-</label></td><td><input style="width:100%;" type="text" [matDatepicker]="todate" disabled></td><td><mat-datepicker-toggle [for]="todate"></mat-datepicker-toggle><mat-datepicker #todate ></mat-datepicker></td><td colspan="2"><button mat-raised-button style="width:100%;" color="warn">Search</button></td></tr>
-                            <tr><td><label style="width:100%;">File Error:</label></td><td ><select style="width:100%;"><option>All</option><option>Yes</option><option>No</option></select></td><td><label style="width:100%;">Format:</label></td><td><select style="width:100%;"><option>All</option><option>837P.4010A</option><option>837P.5010</option></select></td><td colspan="2" align="right"><label style="width:100%;">Usage Indicator:</label></td><td><input style="width:100%;" type="text"></td><td></td><td colspan="2"><button mat-raised-button style="width:100%;" color=warn>Clear All</button></td></tr>
-                            <tr><td><label style="width:100%;">TP:</label></td><td><input style="width:100%;"  type="text"></td><td><label style="width:100%;">Uploaded By:</label></td><td><select style="width:100%;"><option>None Selected</option></select></td><td align="right" colspan="2"><label style="width:100%;" >File Name:</label></td><td colspan="2"><input style="width:100%;" type="text"></td></tr>
-                        </table>
+                        <form [formGroup]="search837Group">
+                            <legend><b>Search 837P Fields</b></legend>
+                            <table style="table-layout:fixed;width:100%;" tabindex="1">
+                                <tr><td><label style="width:100%;">File Id:</label></td><td colspan="2"><input formControlName="FileId" style="width:100%;"  type="text"></td><td><label style="width:100%;">Upload Dates:</label></td><td  colspan="2"><select formControlName="UploadDate" (change)="dateTypeChanges()" style="width:100%;"><option value="10">10 Days</option><option  value="6">6 Months</option><option value="2">2 Years</option><option value="c">Custom</option></select></td><td colspan="2"><app-date-picker-cust tabindex="9" style="width:100vw" type="text" formControlName="UploadFrom" [pickerref]="fromdate" ></app-date-picker-cust></td><td colspan="2"><mat-datepicker-toggle [for]="fromdate"></mat-datepicker-toggle><mat-datepicker #fromdate ></mat-datepicker><label>-</label></td><td colspan="2"><app-date-picker-cust tabindex="10" formControlName="UploadTo" style="width:100%;" type="text" [pickerref]="todate"></app-date-picker-cust></td><td colspan="2"><mat-datepicker-toggle [for]="todate"></mat-datepicker-toggle><mat-datepicker #todate ></mat-datepicker></td><td colspan="2"><button mat-raised-button style="width:100%;" color="warn">Search</button></td></tr>
+                                <tr><td><label style="width:100%;">File Error:</label></td><td colspan="2" ><select formControlName="FileError" style="width:100%;"><option value="">All</option><option value="Y">Yes</option><option value="N">No</option></select></td><td colspan="2"><label style="width:100%;">Format:</label></td><td  colspan="2"><select formControlName="Format" style="width:100%;"><option value="">All</option><option value="4010A">837P.4010A</option><option value="5010">837P.5010</option></select></td><td colspan="2" align="right"><label style="width:100%;">Usage Indicator:</label></td><td colspan="3"><select style="width:100%;" formControlName="UsageIndicator"><option value="">All</option><option value="P">Production</option><option value="T">Test</option></select></td><td></td><td></td><td colspan="2"><button mat-raised-button style="width:100%;" color=warn>Clear All</button></td></tr>
+                                <tr><td><label style="width:100%;">TP:</label></td><td colspan="2"><input formControlName="TP" style="width:100%;"  type="text"></td><td colspan="2"><label style="width:100%;">Uploaded By:</label></td><td colspan="2"><select formControlName="UploadedBy" style="width:100%;"><option value="">None Selected</option></select></td><td align="right" colspan="2"><label style="width:100%;" >File Name:</label></td><td colspan="2"><input style="width:100%;" formControlName="FileName" type="text"></td></tr>
+                            </table>
+                        </form>
                     </fieldset>
                 </td>
             </tr>
@@ -40,6 +42,51 @@
         <td><label>Move to Recycle Bin</label></td>
     </tr>
 </table>
-<table>
-
+<table mat-table [dataSource]="fileData" style="width: 100%;">
+    <ng-container matColumnDef="Fileid">
+        <th align="center" mat-header-cell *matHeaderCellDef>File Id</th>
+        <td mat-cell *matCellDef="let element"><button style="width: fit-content;">{{element.Fileid}}</button></td>
+    </ng-container>
+    <ng-container matColumnDef="TP">
+        <th align="center" mat-header-cell *matHeaderCellDef>Trading Partner</th>
+        <td mat-cell *matCellDef="let element">{{element.TP}}</td>
+    </ng-container>
+    <ng-container matColumnDef="UploadDate">
+        <th align="center" mat-header-cell *matHeaderCellDef>Upload Date</th>
+        <td mat-cell *matCellDef="let element">{{element.UploadDate |date:'MM/dd/yyyy'}}</td>
+    </ng-container>
+    <ng-container matColumnDef="UploadedBy">
+        <th align="center" mat-header-cell *matHeaderCellDef>Uploaded By</th>
+        <td mat-cell *matCellDef="let element">{{element.UploadedBy}}</td>
+    </ng-container>
+    <ng-container matColumnDef="ClaimCount">
+        <th align="center" mat-header-cell *matHeaderCellDef>Claim Count</th>
+        <td mat-cell *matCellDef="let element"><button style="width: fit-content;">{{element.ClaimCount}}</button></td>
+    </ng-container>
+    <ng-container matColumnDef="Pending">
+        <th align="center" mat-header-cell *matHeaderCellDef>Pending</th>
+        <td mat-cell *matCellDef="let element"><button style="width: fit-content;">{{element.Pending}}</button></td>
+    </ng-container>
+    <ng-container matColumnDef="Postinginproc">
+        <th align="center" mat-header-cell *matHeaderCellDef>Posting In Proc</th>
+        <td mat-cell *matCellDef="let element"><button style="width: fit-content;">{{element.Postinginproc}}</button></td>
+    </ng-container>
+    <ng-container matColumnDef="Posted">
+        <th align="center" mat-header-cell *matHeaderCellDef>Posted</th>
+        <td mat-cell *matCellDef="let element"><button style="width: fit-content;">{{element.Posted}}</button></td>
+    </ng-container>
+    <ng-container matColumnDef="Failed">
+        <th align="center" mat-header-cell *matHeaderCellDef>Failed</th>
+        <td mat-cell *matCellDef="let element"><button style="width: fit-content;">{{element.Failed}}</button></td>
+    </ng-container>
+    <ng-container matColumnDef="BilledAmount">
+        <th align="center" mat-header-cell *matHeaderCellDef>Billed Ammount($)</th>
+        <td mat-cell *matCellDef="let element">{{element.BilledAmount}}</td>
+    </ng-container>
+    <ng-container matColumnDef="Format">
+        <th align="center" mat-header-cell *matHeaderCellDef>Format</th>
+        <td mat-cell *matCellDef="let element">{{element.Format}}</td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>

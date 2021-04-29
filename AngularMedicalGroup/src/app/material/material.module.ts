@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
@@ -20,13 +20,16 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatTabsModule} from '@angular/material/tabs';
 import { DatePickerCustComponent } from '../date-picker-cust/date-picker-cust.component';
-import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [],
+  declarations: [DatePickerCustComponent],
+  imports:[CommonModule,FormsModule,MatDatepickerModule,
+    MatNativeDateModule],
   exports:[MatToolbarModule,
     MatCardModule,
+    DatePickerCustComponent,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,

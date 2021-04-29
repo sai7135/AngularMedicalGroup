@@ -25,6 +25,7 @@ const routes: Routes = [
   {path:'claim-view',loadChildren:()=>import('./LazyComponents/claim-view-component/claim-view-component.module').then(m=>m.ClaimViewComponentModule),canActivate:[IpaactivateService]},
   {path:'forgotpassword',loadChildren:()=>import('./LazyComponents/forgot-password/forgot-password.module').then(m=>m.ForgotPasswordModule)},
   {path:'organizationsearch',loadChildren:()=>import('./LazyComponents/organization-search-window/organization-search-window.module').then(m=>m.OrganizationSearchWindowModule),canActivate:[IpaactivateService]},
+  {path:'searchmember',loadChildren:()=>import('./LazyComponents/search-member-l/search-member-l.module').then(m=>m.SearchMemberLModule),canActivate:[IpaactivateService]},
   {path:'**',redirectTo:'ipa'}
 ];
 

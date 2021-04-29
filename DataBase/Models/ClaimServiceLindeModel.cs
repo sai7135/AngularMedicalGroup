@@ -21,7 +21,7 @@ namespace DataBase.Models
         public string DiaPoint2 { get; set; }
         public string DiaPoint3 { get; set; }
         public string DiaPoint4 { get; set; }
-        public string BilledCharg { get; set; }
+        public decimal BilledCharg { get; set; }
         public string Quantity { get; set; }
         public string UnitType { get; set; }
         public bool Emg { get; set; }

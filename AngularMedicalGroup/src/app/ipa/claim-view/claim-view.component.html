@@ -59,7 +59,7 @@
             <mat-datepicker #sdob ></mat-datepicker>
             </td>
             <td><label align="right">Member ID:</label></td>
-            <td><input formControlName="MemberID" type="text"></td>
+            <td><tr><td><input formControlName="MemberID" style="width: 7vw;" type="text"></td><td><button (click)="SearchMember()" mat-icon-button><mat-icon>search</mat-icon></button></td></tr></td>
             <td colspan="2"><label align="right">Ext. Auth/Ref #:</label></td>
             <td><input formControlName="ExtAuthRef" type="text"></td>
         </tr>
@@ -132,7 +132,7 @@
                                 </tr>
                                 <tr>
                                     <td><label>NPI:</label></td>
-                                    <td colspan="2"><input formControlName="BillingProviderNpi" type="text"></td>
+                                    <td colspan="2"><tr><td><input formControlName="BillingProviderNpi" style="width: 7vw;" type="text"></td><td><button mat-icon-button><mat-icon>search</mat-icon></button></td></tr></td>
                                     <td align="right"><label>Tax ID:</label></td>
                                     <td colspan="2"><input formControlName="BillingProvTaxid" style="width:7vw" type="text"></td>
                                 </tr>
@@ -153,15 +153,15 @@
                         <td colspan="2">
                             <table>
                                 <tr>
-                                    <td><label>City:</label></td>
+                                    <td align="right"><label>City:</label></td>
                                     <td><input  formControlName="PtoAAdressCity"  style="width: 5vw;" type="text"></td>
-                                    <td><label>State:</label></td>
+                                    <td align="right"><label>State:</label></td>
                                     <td><input formControlName="PtoAAdressStat" type="text" style="width: 5vw;"></td>
                                 </tr>
                                 <tr>
-                                    <td><label>Zip:</label></td>
+                                    <td align="right"><label>Zip:</label></td>
                                     <td><input formControlName="PtoAAdressZip" type="text" style="width: 5vw;"></td>
-                                    <td><label>NPI:</label></td>
+                                    <td align="right"><label>NPI:</label></td>
                                     <td colspan="2"><input type="text"></td>
                                 </tr>
                             </table>
@@ -179,13 +179,13 @@
                     <tr><td colspan="2"><label><b>Rendering Provider</b></label></td></tr>
                     <tr><td align="right"><label>Last:</label></td><td><input formControlName="RendProvLast" type="text"></td></tr>
                     <tr><td align="right"><label>First:</label></td><td><input formControlName="RendProvFirst" type="text"></td></tr>
-                    <tr><td align="right"><label>NPI:</label></td><td><input formControlName="RendProvNpi" type="text"></td></tr>
-                    <tr><td align="right"><label>Other Prov.ID:</label></td><td><input formControlName="RendProvOth" type="text"></td></tr>
+                    <tr><td align="right"><label>NPI:</label></td><td><tr><td><input formControlName="RendProvNpi" style="width: 7vw;" type="text"></td><td><button mat-icon-button><mat-icon>search</mat-icon></button></td></tr></td></tr>
+                    <tr><td align="right"><label>Other Prov.ID:</label></td><td><tr><td><input formControlName="RendProvOth" style="width: 7vw;" type="text"></td><td><button mat-icon-button><mat-icon>search</mat-icon></button></td></tr></td></tr>
                     <tr><td colspan="2"><label><b>Refering Provider</b></label></td></tr>
                     <tr><td align="right"><label>Last:</label></td><td><input formControlName="RefProvLast" type="text"></td></tr>
                     <tr><td align="right"><label>First:</label></td><td><input formControlName="RefProvFirst" type="text"></td></tr>
-                    <tr><td align="right"><label>NPI:</label></td><td><input formControlName="RefProvNpi" type="text"></td></tr>
-                    <tr><td align="right"><label>Other Prov.ID:</label></td><td><input formControlName="RefProvNpiOth" type="text"></td></tr>
+                    <tr><td align="right"><label>NPI:</label></td><td><tr><td><input formControlName="RefProvNpi"  style="width: 7vw;" type="text"></td><td><button mat-icon-button><mat-icon>search</mat-icon></button></td></tr></td></tr>
+                    <tr><td align="right"><label>Other Prov.ID:</label></td><td><tr><td><input formControlName="RefProvNpiOth"  style="width: 7vw;" type="text"></td><td><button mat-icon-button><mat-icon>search</mat-icon></button></td></tr></td></tr>
                 </table>
             </td>
             <td style="vertical-align: top;">
@@ -198,20 +198,20 @@
                         <td align="left" colspan="2">
                             <table>
                                 <tr>
-                                    <td><label>City:</label></td>
+                                    <td align="right"><label>City:</label></td>
                                     <td><input formControlName="FacilityCity" style="width: 5vw;" type="text"></td>
-                                    <td><label>State:</label></td>
+                                    <td align="right"><label>State:</label></td>
                                     <td><input formControlName="FacilityState"  type="text" style="width: 5vw;"></td>
                                 </tr>
                                 <tr>
-                                    <td><label>Zip:</label></td>
+                                    <td align="right"><label>Zip:</label></td>
                                     <td><input formControlName="FacilityZip" type="text" style="width: 5vw;"></td>
-                                    <td><label>NPI:</label></td>
-                                    <td colspan="2"><input formControlName="FacilityNPI" type="text"></td>
+                                    <td align="right"><label>NPI:</label></td>
+                                    <td colspan="2"><tr><td><input formControlName="FacilityNPI" style="width: 7vw;" type="text"></td><td><button mat-icon-button><mat-icon>search</mat-icon></button></td></tr></td>
                                 </tr>
                                 <tr>
                                     <td><label>Other Prov.ID:</label></td>
-                                    <td colspan="3"><input formControlName="FacilityOthProvID" type="text"></td>
+                                    <td colspan="3"><tr><td><input formControlName="FacilityOthProvID" style="width: 7vw;" type="text"></td><td><button mat-icon-button><mat-icon>search</mat-icon></button></td></tr></td>
                                 </tr>
                             </table>
                         </td>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import {HpvalidatorserviceService} from '../validators/hpvalidatorservice.service';
 import {MemberesvalidatepcpserviceService} from '../validators/memberesvalidatepcpservice.service';

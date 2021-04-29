@@ -1,1 +1,1 @@
-<input class="form-control" [ngClass]="{'showinvalidcolumns':showErrors}" type="text" [disabled]="disabled" [(ngModel)]="value" (blur)="onTouches($event.target.value)" (dateChange)="onChanged($event.target.value)" [matDatepicker]="pickerref">
+<input [id]="uqvalue" class="form-control" style="width: 5vw;"  [ngClass]="{'showinvalidcolumns':showErrors}" type="text" [disabled]="disabled"  [(ngModel)]="value1" (blur)="onChanged($event.target.value)"  [matDatepicker]="pickerref">

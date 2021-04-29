@@ -12,6 +12,7 @@ namespace DataBase
 {
     public interface IDatabase
     {
+        Task<List<MemberSearchResult>> SearchMember(MemberSearchModel msm);
         Task UpdatePCPs(String memberid, String healthplan, MemberPCPModel[] hps);
         Task<MemberPCPModel[]> GetMemberPcps(string memberid,string healthplan);
         Task UpdateHPs(String memberid, String healthplan, MemberHealthPlanModel[] hps);
@@ -45,5 +46,6 @@ namespace DataBase
 
         Task AddBenefitMaster(BenefitMasterModel model);
         Task<List<ClaimsData>> GetClaimData(string claimid);
+        Task<List<FileDataModel>> GetFileData(FileDataSearchModel search);
     }
 }

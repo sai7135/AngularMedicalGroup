@@ -64,7 +64,7 @@ export class MemberHPdataComponent implements OnInit {
     for(let i=0;i<this.data.value.length;i++){
       for(let j=0;j<this.data.value.length;j++){
         if(this.data.value[i]!=this.data.value[j]){
-       if(this.commTask.datesCollide(new Date(this.data.value[i].BenefitFrom),new Date(this.data.value[i].BenefitTo),new Date(this.data.value[j].BenefitFrom),new Date(this.data.value[j].BenefitTo))){
+       if(this.commTask.datesCollide(new Date(this.data.value[i].BenefitFrom),new Date(this.data.value[i].BenefitTo==null?new Date('1/1/5000'):new Date(this.data.value[i].BenefitTo)),new Date(this.data.value[j].BenefitFrom),new Date(this.data.value[j].BenefitTo==null?new Date('1/1/5000'):new Date(this.data.value[j].BenefitTo)))){
           this.dialog.open(MessageComponent,{
           width:'50vw',
           data:{title:'Dates Collide',content:'Cant save dates are colliding please check'}

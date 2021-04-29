@@ -15,16 +15,17 @@ import { stringify } from 'querystring';
   ]
 })
 export class DatePickerCustComponent implements OnInit,ControlValueAccessor {
-  value:string;
-  @Input() pickerref:string;
+  value1:string;
+  @Input() pickerref;
   @Input() showErrors:boolean;
+  uqvalue:string;
   onChange: (vl:string) => void;
   onTouched:() => void;
   disabled:boolean=false;
   vl:string;
   constructor() { }
   writeValue(obj: string): void {
-    this.value=obj;
+    this.value1=obj;
     // if(obj){
     // const dt=new Date(obj);
     // this.value=dt.getDate()+"/";
@@ -36,16 +37,16 @@ export class DatePickerCustComponent implements OnInit,ControlValueAccessor {
     //   this.value="";
     // }
   }
-  onChanged(obj:Date){
-    console.log("on changed");
-    if(obj){
-      this.vl=(obj.getMonth())+"/";
-      this.vl+=obj.getDate()+"/";
-      this.vl+=obj.getFullYear();
+  onChanged(obj){
+    var date=new Date(obj);
+    if(! isNaN (date.getMonth())){
+      this.vl=(date.getMonth()+1)+"/";
+      this.vl+=date.getDate()+"/";
+      this.vl+=date.getFullYear();
       this.onChange(this.vl);
       }
       else{
-        this.value="";
+        (<HTMLInputElement>document.getElementById(this.uqvalue)).value=null;
       }
   }
   onTouches(vl){
@@ -64,6 +65,9 @@ export class DatePickerCustComponent implements OnInit,ControlValueAccessor {
   }
 
   ngOnInit(): void {
+    setTimeout(()=>{
+      this.uqvalue=this.pickerref.id;
+    });
   }
 
 }

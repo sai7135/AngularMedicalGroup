@@ -61,9 +61,46 @@ namespace EDIToDBLoaderService
         }
         public void InsertClaim(EDIModel model, int fileid)
         {
+            
             foreach (Group group in model.Group)
             {
-                if (group.Transaction.Length == group.GE.GE1)
+                using (SqlConnection con = new SqlConnection(@"data source=CAPTIVATESOFT2\MSSQLSERVER01; database = EDIDatabase ;User id=saikiran;Password=1SAI23kiran@!;Trusted_Connection=False;MultipleActiveResultSets=true;"))
+                {
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand("spinsertenvolop", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Fileid", fileid);
+                    cmd.Parameters.AddWithValue("@ISA01", model.ISA.ISA1);
+                    cmd.Parameters.AddWithValue("@ISA02", model.ISA.ISA2);
+                    cmd.Parameters.AddWithValue("@ISA03", model.ISA.ISA3);
+                    cmd.Parameters.AddWithValue("@ISA04", model.ISA.ISA4);
+                    cmd.Parameters.AddWithValue("@ISA05", model.ISA.ISA5);
+                    cmd.Parameters.AddWithValue("@ISA06", model.ISA.ISA6);
+                    cmd.Parameters.AddWithValue("@ISA07", model.ISA.ISA7);
+                    cmd.Parameters.AddWithValue("@ISA08", model.ISA.ISA8);
+                    cmd.Parameters.AddWithValue("@ISA09", model.ISA.ISA9);
+                    cmd.Parameters.AddWithValue("@ISA10", model.ISA.ISA10);
+                    cmd.Parameters.AddWithValue("@ISA11", model.ISA.ISA11);
+                    cmd.Parameters.AddWithValue("@ISA12", model.ISA.ISA12);
+                    cmd.Parameters.AddWithValue("@ISA13", model.ISA.ISA13);
+                    cmd.Parameters.AddWithValue("@ISA14", model.ISA.ISA14);
+                    cmd.Parameters.AddWithValue("@ISA15", model.ISA.ISA15);
+                    cmd.Parameters.AddWithValue("@ISA16", model.ISA.ISA16);
+                    cmd.Parameters.AddWithValue("@GS01", group.GS.GS1);
+                    cmd.Parameters.AddWithValue("@GS02", group.GS.GS2);
+                    cmd.Parameters.AddWithValue("@GS03", group.GS.GS3);
+                    cmd.Parameters.AddWithValue("@GS04", group.GS.GS4);
+                    cmd.Parameters.AddWithValue("@GS05", group.GS.GS5);
+                    cmd.Parameters.AddWithValue("@GS06", group.GS.GS6);
+                    cmd.Parameters.AddWithValue("@GS07", group.GS.GS7);
+                    cmd.Parameters.AddWithValue("@GS08", group.GS.GS8);
+                    cmd.Parameters.AddWithValue("@GE01", group.GE.GE1);
+                    cmd.Parameters.AddWithValue("@GE02", group.GE.GE2);
+                    cmd.Parameters.AddWithValue("@IEA01", model.IEA.IEA1);
+                    cmd.Parameters.AddWithValue("@IEA02", model.IEA.IEA2);
+                    cmd.ExecuteNonQuery();
+                }
+                    if (group.Transaction.Length == group.GE.GE1)
                 {
                     foreach (Transaction transaction in group.Transaction)
                     {
