@@ -4,6 +4,7 @@ import {CommonTasksService} from '../../services/common-tasks.service';
 import {MatTableDataSource} from '@angular/material/table';
 import { MessageComponent } from 'src/app/dialog/message/message.component';
 import {ApicontactService} from '../../services/apicontact.service';
+import { apilink, weblink } from 'src/app/raw/defaultdata';
 
 export class PcpTableData{
   public Add:string="add";
@@ -47,7 +48,7 @@ export class MemberPcpdataComponent implements OnInit {
   }
   searchPcp(value:string,i:any){
     if(value=='F2'){
-      window.open("https://localhost:44344/AngularMedicalGroup/#/searchpcp","_blank","width:200,height:100");
+      window.open(weblink+"searchpcp","_blank","width:200,height:100");
       const bc=new BroadcastChannel("sendpcpid");
       bc.addEventListener('message',r=>{
         this.data.value[i].pcpid=r.data.pcpid;
@@ -61,7 +62,7 @@ export class MemberPcpdataComponent implements OnInit {
     for(let i=0;i<this.data.value.length;i++){
       for(let j=0;j<this.data.value.length;j++){
         if(this.data.value[i]!=this.data.value[j]){
-       if(this.commTask.datesCollide(this.data.value[i].pcpfromdt,this.data.value[i].pcptodt,this.data.value[j].pcpfromdt,this.data.value[j].pcptodt)){
+       if(this.commTask.datesCollide(this.data.value[i].pcpfromdt,this.data.value[i].pcptodt==null?new Date('1/1/5000'):this.data.value[i].pcptodt,this.data.value[j].pcpfromdt,this.data.value[j].pcptodt==null?new Date('1/1/5000'):this.data.value[j].pcptodt)){
           this.dialog.open(MessageComponent,{
           width:'50vw',
           data:{title:'Dates Collide',content:'Cant save dates are colliding please check'}

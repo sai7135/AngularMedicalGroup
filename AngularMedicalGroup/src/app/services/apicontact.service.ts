@@ -19,6 +19,10 @@ import {saveAs} from 'file-saver';
 import {HPTableData,MemberHPdataComponent} from '../dialog/member-hpdata/member-hpdata.component';
 import { PcpTableData } from '../dialog/member-pcpdata/member-pcpdata.component';
 import {apilink} from '../raw/defaultdata';
+import { FileData } from '../models/filedata.model';
+import {FileSearchModel} from '../models/filesearchdata.model';
+import { MemberSearchResult } from '../models/membersearchresult.model';
+import { MemberSearch } from '../models/membersearcg,model';
 
 @Injectable({
   providedIn: 'root'
@@ -34,6 +38,12 @@ export class ApicontactService {
     }).subscribe(data=>{
       saveAs(new Blob([data],{type:'text/plain'}),fileid+".txt");
     });
+  }
+  public searchMemberClaim(data:MemberSearch){
+    return this.http.post<MemberSearchResult[]>(apilink+"Users/searchMemberClaim",data);
+  }
+  public getFileData(searchdata:FileSearchModel):Observable<FileData[]>{
+    return this.http.post<FileData[]>(apilink+"Users/GetFileData",searchdata);
   }
   public getClaimsData(claimid:string):Observable<ClaimData>{
     return this.http.get<ClaimData>(apilink+"Users/GetClaimsData?claimid="+claimid)

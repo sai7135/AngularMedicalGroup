@@ -1,0 +1,13 @@
+<table style="width: 100%;">
+    <tr>
+        <td>Member Search</td>
+        <td align="right"><button (click)="close()" mat-button color=warn>Close</button></td>
+    </tr>
+</table>
+<mat-divider></mat-divider>
+<table style="width: 100%;"  [formGroup]="MemberSearchGroup">
+    <tr><td align="right"><label>Member ID/Other ID:</label></td><td><input formControlName="memid" type="text"></td><td align="right"><label>Last Name:</label></td><td><input formControlName="lastname" type="text"></td><td align="right"><label>First Name:</label></td><td><input formControlName="firstname" type="text"></td></tr>
+    <tr><td align="right"><label>HP:</label></td><td><input formControlName="hp" type="text"></td><td align="right"><label>DOB:</label></td><td><tr><td><app-date-picker-cust formControlName="dob" type="text" style="width: 5vw;" [pickerref]="dob"></app-date-picker-cust><mat-datepicker-toggle [for]="dob"></mat-datepicker-toggle><mat-datepicker #dob></mat-datepicker></td><td></td></tr></td><td align="right"><label>Gender:</label></td><td><select formControlName="gender"><option value="null">None Selected</option><option value="M">Male</option><option value="F">Female</option><option>Unknown</option></select></td></tr>
+    <tr><td align="right"><label>Employer Group Code:</label></td><td><tr><td><input type="text"></td><td><button mat-icon-button><mat-icon>search</mat-icon></button></td></tr></td><td align="right"><label>Company:</label></td><td><select><option value="">None Selected</option><option value="">HSPN</option></select></td><td align="right"><label>Site Number:</label></td><td><input type="text"></td></tr>
+    <tr><td colspan="6" align="right"><tr><td><button type="reset" mat-raised-button color="warn">Clear All</button></td><td><button type="submit" (click)="search()" mat-raised-button color="warn">Search</button></td></tr></td></tr>
+</table>

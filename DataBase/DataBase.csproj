@@ -62,9 +62,13 @@
     <Compile Include="Models\ClaimServiceLindeModel.cs" />
     <Compile Include="Models\ClaimsTableModel.cs" />
     <Compile Include="Models\EDIModel.cs" />
+    <Compile Include="Models\FileDataModel.cs" />
+    <Compile Include="Models\FileDataSearchModel.cs" />
     <Compile Include="Models\MemberHealthPlanModel.cs" />
     <Compile Include="Models\MemberPCPModel.cs" />
     <Compile Include="Models\MemberSearch.cs" />
+    <Compile Include="Models\MemberSearchModel.cs" />
+    <Compile Include="Models\MemberSearchResult.cs" />
     <Compile Include="Models\MembersModel.cs" />
     <Compile Include="Models\OrganizationModel.cs" />
     <Compile Include="Models\PcpAutoFillModel.cs" />

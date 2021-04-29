@@ -15,12 +15,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _iparouting_member_routing_member_routing_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../iparouting/member-routing/member-routing.module */ "./src/app/iparouting/member-routing/member-routing.module.ts");
 /* harmony import */ var _dialog_member_hpdata_member_hpdata_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../dialog/member-hpdata/member-hpdata.component */ "./src/app/dialog/member-hpdata/member-hpdata.component.ts");
 /* harmony import */ var _dialog_member_pcpdata_member_pcpdata_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../dialog/member-pcpdata/member-pcpdata.component */ "./src/app/dialog/member-pcpdata/member-pcpdata.component.ts");
-/* harmony import */ var _date_picker_cust_date_picker_cust_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../date-picker-cust/date-picker-cust.component */ "./src/app/date-picker-cust/date-picker-cust.component.ts");
-/* harmony import */ var _ipa_membersearch_membersearch_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../ipa/membersearch/membersearch.component */ "./src/app/ipa/membersearch/membersearch.component.ts");
-/* harmony import */ var _material_material_module__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../material/material.module */ "./src/app/material/material.module.ts");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/__ivy_ngcc__/fesm2015/forms.js");
-
+/* harmony import */ var _ipa_membersearch_membersearch_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../ipa/membersearch/membersearch.component */ "./src/app/ipa/membersearch/membersearch.component.ts");
+/* harmony import */ var _material_material_module__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../material/material.module */ "./src/app/material/material.module.ts");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/__ivy_ngcc__/fesm2015/forms.js");
 
 
 
@@ -36,141 +34,37 @@ class MembersModuleModule {
 MembersModuleModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineNgModule"]({ type: MembersModuleModule });
 MembersModuleModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({ factory: function MembersModuleModule_Factory(t) { return new (t || MembersModuleModule)(); }, imports: [[
             _iparouting_member_routing_member_routing_module__WEBPACK_IMPORTED_MODULE_2__["MemberRoutingModule"],
-            _material_material_module__WEBPACK_IMPORTED_MODULE_7__["MaterialModule"],
-            _angular_common__WEBPACK_IMPORTED_MODULE_8__["CommonModule"],
-            _angular_forms__WEBPACK_IMPORTED_MODULE_9__["FormsModule"],
-            _angular_forms__WEBPACK_IMPORTED_MODULE_9__["ReactiveFormsModule"]
+            _material_material_module__WEBPACK_IMPORTED_MODULE_6__["MaterialModule"],
+            _angular_common__WEBPACK_IMPORTED_MODULE_7__["CommonModule"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_8__["FormsModule"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_8__["ReactiveFormsModule"]
         ]] });
 (function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](MembersModuleModule, { declarations: [_ipa_members_members_component__WEBPACK_IMPORTED_MODULE_1__["MembersComponent"],
-        _ipa_membersearch_membersearch_component__WEBPACK_IMPORTED_MODULE_6__["MembersearchComponent"],
+        _ipa_membersearch_membersearch_component__WEBPACK_IMPORTED_MODULE_5__["MembersearchComponent"],
         _dialog_member_hpdata_member_hpdata_component__WEBPACK_IMPORTED_MODULE_3__["MemberHPdataComponent"],
-        _dialog_member_pcpdata_member_pcpdata_component__WEBPACK_IMPORTED_MODULE_4__["MemberPcpdataComponent"],
-        _date_picker_cust_date_picker_cust_component__WEBPACK_IMPORTED_MODULE_5__["DatePickerCustComponent"]], imports: [_iparouting_member_routing_member_routing_module__WEBPACK_IMPORTED_MODULE_2__["MemberRoutingModule"],
-        _material_material_module__WEBPACK_IMPORTED_MODULE_7__["MaterialModule"],
-        _angular_common__WEBPACK_IMPORTED_MODULE_8__["CommonModule"],
-        _angular_forms__WEBPACK_IMPORTED_MODULE_9__["FormsModule"],
-        _angular_forms__WEBPACK_IMPORTED_MODULE_9__["ReactiveFormsModule"]] }); })();
+        _dialog_member_pcpdata_member_pcpdata_component__WEBPACK_IMPORTED_MODULE_4__["MemberPcpdataComponent"]], imports: [_iparouting_member_routing_member_routing_module__WEBPACK_IMPORTED_MODULE_2__["MemberRoutingModule"],
+        _material_material_module__WEBPACK_IMPORTED_MODULE_6__["MaterialModule"],
+        _angular_common__WEBPACK_IMPORTED_MODULE_7__["CommonModule"],
+        _angular_forms__WEBPACK_IMPORTED_MODULE_8__["FormsModule"],
+        _angular_forms__WEBPACK_IMPORTED_MODULE_8__["ReactiveFormsModule"]] }); })();
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MembersModuleModule, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
         args: [{
                 declarations: [
                     _ipa_members_members_component__WEBPACK_IMPORTED_MODULE_1__["MembersComponent"],
-                    _ipa_membersearch_membersearch_component__WEBPACK_IMPORTED_MODULE_6__["MembersearchComponent"],
+                    _ipa_membersearch_membersearch_component__WEBPACK_IMPORTED_MODULE_5__["MembersearchComponent"],
                     _dialog_member_hpdata_member_hpdata_component__WEBPACK_IMPORTED_MODULE_3__["MemberHPdataComponent"],
-                    _dialog_member_pcpdata_member_pcpdata_component__WEBPACK_IMPORTED_MODULE_4__["MemberPcpdataComponent"],
-                    _date_picker_cust_date_picker_cust_component__WEBPACK_IMPORTED_MODULE_5__["DatePickerCustComponent"]
+                    _dialog_member_pcpdata_member_pcpdata_component__WEBPACK_IMPORTED_MODULE_4__["MemberPcpdataComponent"]
                 ],
                 imports: [
                     _iparouting_member_routing_member_routing_module__WEBPACK_IMPORTED_MODULE_2__["MemberRoutingModule"],
-                    _material_material_module__WEBPACK_IMPORTED_MODULE_7__["MaterialModule"],
-                    _angular_common__WEBPACK_IMPORTED_MODULE_8__["CommonModule"],
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_9__["FormsModule"],
-                    _angular_forms__WEBPACK_IMPORTED_MODULE_9__["ReactiveFormsModule"]
+                    _material_material_module__WEBPACK_IMPORTED_MODULE_6__["MaterialModule"],
+                    _angular_common__WEBPACK_IMPORTED_MODULE_7__["CommonModule"],
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_8__["FormsModule"],
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_8__["ReactiveFormsModule"]
                 ]
             }]
     }], null, null); })();
-
-
-/***/ }),
-
-/***/ "./src/app/date-picker-cust/date-picker-cust.component.ts":
-/*!****************************************************************!*\
-  !*** ./src/app/date-picker-cust/date-picker-cust.component.ts ***!
-  \****************************************************************/
-/*! exports provided: DatePickerCustComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DatePickerCustComponent", function() { return DatePickerCustComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/__ivy_ngcc__/fesm2015/forms.js");
-/* harmony import */ var _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material/datepicker */ "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/datepicker.js");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
-
-
-
-
-
-
-const _c0 = function (a0) { return { "showinvalidcolumns": a0 }; };
-class DatePickerCustComponent {
-    constructor() {
-        this.disabled = false;
-    }
-    writeValue(obj) {
-        this.value = obj;
-        // if(obj){
-        // const dt=new Date(obj);
-        // this.value=dt.getDate()+"/";
-        // this.value+=dt.getMonth()+"/";
-        // this.value+=dt.getFullYear();
-        // console.log("write value");
-        // }
-        // else{
-        //   this.value="";
-        // }
-    }
-    onChanged(obj) {
-        console.log("on changed");
-        if (obj) {
-            this.vl = (obj.getMonth()) + "/";
-            this.vl += obj.getDate() + "/";
-            this.vl += obj.getFullYear();
-            this.onChange(this.vl);
-        }
-        else {
-            this.value = "";
-        }
-    }
-    onTouches(vl) {
-        this.onTouched();
-    }
-    registerOnChange(fn) {
-        this.onChange = fn;
-    }
-    registerOnTouched(fn) {
-        this.onTouched = fn;
-    }
-    setDisabledState(isDisabled) {
-        this.disabled = isDisabled;
-    }
-    ngOnInit() {
-    }
-}
-DatePickerCustComponent.ɵfac = function DatePickerCustComponent_Factory(t) { return new (t || DatePickerCustComponent)(); };
-DatePickerCustComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: DatePickerCustComponent, selectors: [["app-date-picker-cust"]], inputs: { pickerref: "pickerref", showErrors: "showErrors" }, features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵProvidersFeature"]([
-            {
-                provide: _angular_forms__WEBPACK_IMPORTED_MODULE_1__["NG_VALUE_ACCESSOR"],
-                useExisting: DatePickerCustComponent,
-                multi: true
-            }
-        ])], decls: 1, vars: 6, consts: [["type", "text", 1, "form-control", 3, "ngClass", "disabled", "ngModel", "matDatepicker", "ngModelChange", "blur", "dateChange"]], template: function DatePickerCustComponent_Template(rf, ctx) { if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "input", 0);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function DatePickerCustComponent_Template_input_ngModelChange_0_listener($event) { return ctx.value = $event; })("blur", function DatePickerCustComponent_Template_input_blur_0_listener($event) { return ctx.onTouches($event.target.value); })("dateChange", function DatePickerCustComponent_Template_input_dateChange_0_listener($event) { return ctx.onChanged($event.target.value); });
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    } if (rf & 2) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](4, _c0, ctx.showErrors))("disabled", ctx.disabled)("ngModel", ctx.value)("matDatepicker", ctx.pickerref);
-    } }, directives: [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["DefaultValueAccessor"], _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_2__["MatDatepickerInput"], _angular_common__WEBPACK_IMPORTED_MODULE_3__["NgClass"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["NgModel"]], styles: [".showinvalidcolumns[_ngcontent-%COMP%]{\r\n    outline-color: red;\r\n    border-color: red;\r\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZGF0ZS1waWNrZXItY3VzdC9kYXRlLXBpY2tlci1jdXN0LmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxrQkFBa0I7SUFDbEIsaUJBQWlCO0FBQ3JCIiwiZmlsZSI6InNyYy9hcHAvZGF0ZS1waWNrZXItY3VzdC9kYXRlLXBpY2tlci1jdXN0LmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuc2hvd2ludmFsaWRjb2x1bW5ze1xyXG4gICAgb3V0bGluZS1jb2xvcjogcmVkO1xyXG4gICAgYm9yZGVyLWNvbG9yOiByZWQ7XHJcbn0iXX0= */"] });
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](DatePickerCustComponent, [{
-        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
-        args: [{
-                selector: 'app-date-picker-cust',
-                templateUrl: './date-picker-cust.component.html',
-                styleUrls: ['./date-picker-cust.component.css'],
-                providers: [
-                    {
-                        provide: _angular_forms__WEBPACK_IMPORTED_MODULE_1__["NG_VALUE_ACCESSOR"],
-                        useExisting: DatePickerCustComponent,
-                        multi: true
-                    }
-                ]
-            }]
-    }], function () { return []; }, { pickerref: [{
-            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
-        }], showErrors: [{
-            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
-        }] }); })();
 
 
 /***/ }),
@@ -441,7 +335,7 @@ class MemberHPdataComponent {
         for (let i = 0; i < this.data.value.length; i++) {
             for (let j = 0; j < this.data.value.length; j++) {
                 if (this.data.value[i] != this.data.value[j]) {
-                    if (this.commTask.datesCollide(new Date(this.data.value[i].BenefitFrom), new Date(this.data.value[i].BenefitTo), new Date(this.data.value[j].BenefitFrom), new Date(this.data.value[j].BenefitTo))) {
+                    if (this.commTask.datesCollide(new Date(this.data.value[i].BenefitFrom), new Date(this.data.value[i].BenefitTo == null ? new Date('1/1/5000') : new Date(this.data.value[i].BenefitTo)), new Date(this.data.value[j].BenefitFrom), new Date(this.data.value[j].BenefitTo == null ? new Date('1/1/5000') : new Date(this.data.value[j].BenefitTo)))) {
                         this.dialog.open(src_app_dialog_message_message_component__WEBPACK_IMPORTED_MODULE_3__["MessageComponent"], {
                             width: '50vw',
                             data: { title: 'Dates Collide', content: 'Cant save dates are colliding please check' }
@@ -626,14 +520,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_material_dialog__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/material/dialog */ "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/dialog.js");
 /* harmony import */ var _angular_material_table__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material/table */ "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/table.js");
 /* harmony import */ var src_app_dialog_message_message_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/dialog/message/message.component */ "./src/app/dialog/message/message.component.ts");
-/* harmony import */ var _services_apicontact_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../services/apicontact.service */ "./src/app/services/apicontact.service.ts");
-/* harmony import */ var _services_common_tasks_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../services/common-tasks.service */ "./src/app/services/common-tasks.service.ts");
-/* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/material/button */ "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/button.js");
-/* harmony import */ var _angular_material_icon__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/material/icon */ "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/icon.js");
-/* harmony import */ var _angular_material_select__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/material/select */ "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/select.js");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/__ivy_ngcc__/fesm2015/forms.js");
-/* harmony import */ var _angular_material_core__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/material/core */ "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/core.js");
-/* harmony import */ var _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/material/datepicker */ "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/datepicker.js");
+/* harmony import */ var src_app_raw_defaultdata__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/raw/defaultdata */ "./src/app/raw/defaultdata.ts");
+/* harmony import */ var _services_apicontact_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../services/apicontact.service */ "./src/app/services/apicontact.service.ts");
+/* harmony import */ var _services_common_tasks_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../services/common-tasks.service */ "./src/app/services/common-tasks.service.ts");
+/* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/material/button */ "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/button.js");
+/* harmony import */ var _angular_material_icon__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/material/icon */ "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/icon.js");
+/* harmony import */ var _angular_material_select__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/material/select */ "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/select.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/__ivy_ngcc__/fesm2015/forms.js");
+/* harmony import */ var _angular_material_core__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/material/core */ "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/material/datepicker */ "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/datepicker.js");
+
 
 
 
@@ -864,7 +760,7 @@ class MemberPcpdataComponent {
     }
     searchPcp(value, i) {
         if (value == 'F2') {
-            window.open("https://localhost:44344/AngularMedicalGroup/#/searchpcp", "_blank", "width:200,height:100");
+            window.open(src_app_raw_defaultdata__WEBPACK_IMPORTED_MODULE_4__["weblink"] + "searchpcp", "_blank", "width:200,height:100");
             const bc = new BroadcastChannel("sendpcpid");
             bc.addEventListener('message', r => {
                 this.data.value[i].pcpid = r.data.pcpid;
@@ -878,7 +774,7 @@ class MemberPcpdataComponent {
         for (let i = 0; i < this.data.value.length; i++) {
             for (let j = 0; j < this.data.value.length; j++) {
                 if (this.data.value[i] != this.data.value[j]) {
-                    if (this.commTask.datesCollide(this.data.value[i].pcpfromdt, this.data.value[i].pcptodt, this.data.value[j].pcpfromdt, this.data.value[j].pcptodt)) {
+                    if (this.commTask.datesCollide(this.data.value[i].pcpfromdt, this.data.value[i].pcptodt == null ? new Date('1/1/5000') : this.data.value[i].pcptodt, this.data.value[j].pcpfromdt, this.data.value[j].pcptodt == null ? new Date('1/1/5000') : this.data.value[j].pcptodt)) {
                         this.dialog.open(src_app_dialog_message_message_component__WEBPACK_IMPORTED_MODULE_3__["MessageComponent"], {
                             width: '50vw',
                             data: { title: 'Dates Collide', content: 'Cant save dates are colliding please check' }
@@ -947,7 +843,7 @@ class MemberPcpdataComponent {
         });
     }
 }
-MemberPcpdataComponent.ɵfac = function MemberPcpdataComponent_Factory(t) { return new (t || MemberPcpdataComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_apicontact_service__WEBPACK_IMPORTED_MODULE_4__["ApicontactService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_material_dialog__WEBPACK_IMPORTED_MODULE_1__["MatDialog"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_common_tasks_service__WEBPACK_IMPORTED_MODULE_5__["CommonTasksService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_material_dialog__WEBPACK_IMPORTED_MODULE_1__["MatDialogRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_material_dialog__WEBPACK_IMPORTED_MODULE_1__["MAT_DIALOG_DATA"])); };
+MemberPcpdataComponent.ɵfac = function MemberPcpdataComponent_Factory(t) { return new (t || MemberPcpdataComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_apicontact_service__WEBPACK_IMPORTED_MODULE_5__["ApicontactService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_material_dialog__WEBPACK_IMPORTED_MODULE_1__["MatDialog"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_common_tasks_service__WEBPACK_IMPORTED_MODULE_6__["CommonTasksService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_material_dialog__WEBPACK_IMPORTED_MODULE_1__["MatDialogRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_material_dialog__WEBPACK_IMPORTED_MODULE_1__["MAT_DIALOG_DATA"])); };
 MemberPcpdataComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: MemberPcpdataComponent, selectors: [["app-member-pcpdata"]], decls: 45, vars: 3, consts: [[2, "width", "98%"], ["mat-dialog-title", "", "cdkDrag", "", "cdkDragRootElement", ".cdk-overlay-pane", "cdkDragHandle", ""], [2, "width", "2%"], ["mat-icon-button", "", 3, "click"], ["mat-table", "", 1, "mat-elevation-z8", 2, "width", "100%", 3, "dataSource"], ["matColumnDef", "Add"], ["mat-header-cell", "", 4, "matHeaderCellDef"], ["mat-cell", "", "style", "width: 15%;", 4, "matCellDef"], ["matColumnDef", "c"], ["mat-cell", "", "style", "width: 5%;", 4, "matCellDef"], ["matColumnDef", "pcpid"], ["mat-cell", "", 4, "matCellDef"], ["matColumnDef", "pcpName", 2, "width", "70%"], ["matColumnDef", "pcpprimorg"], ["matColumnDef", "maintanancereason"], ["matColumnDef", "pcpfromdt"], ["matColumnDef", "pcptodt"], ["mat-header-row", "", 4, "matHeaderRowDef"], ["mat-row", "", 4, "matRowDef", "matRowDefColumns"], [2, "width", "100%"], ["align", "right"], ["mat-raised-button", "", "color", "warn", 3, "click"], ["align", "left"], ["mat-header-cell", ""], ["mat-cell", "", 2, "width", "15%"], ["mat-icon-button", "", "color", "warn", 3, "click"], ["mat-cell", "", 2, "width", "5%"], [2, "border", "1px solid black", 3, "ngModel", "ngModelChange"], ["value", "C"], ["value", "H"], ["mat-cell", ""], ["type", "text", "placeholder", "F2", 2, "margin", "10%", "width", "50%", 3, "ngModel", "blur", "keydown", "ngModelChange"], ["type", "text", 2, "margin", "10%", "width", "80%", 3, "ngModel", "ngModelChange"], [3, "ngModel", "ngModelChange"], ["value", "1"], [2, "width", "60%"], ["autocomplete", "off", 2, "width", "80%", 3, "ngModel", "matDatepicker", "blur", "ngModelChange"], [2, "width", "40%"], [3, "for"], ["pcpfromdt", ""], ["pcptodt", ""], ["mat-header-row", ""], ["mat-row", ""]], template: function MemberPcpdataComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "table");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "tr");
@@ -1027,7 +923,7 @@ MemberPcpdataComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵd
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("matHeaderRowDef", ctx.displayedColumns);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("matRowDefColumns", ctx.displayedColumns);
-    } }, directives: [_angular_material_dialog__WEBPACK_IMPORTED_MODULE_1__["MatDialogTitle"], _angular_material_button__WEBPACK_IMPORTED_MODULE_6__["MatButton"], _angular_material_icon__WEBPACK_IMPORTED_MODULE_7__["MatIcon"], _angular_material_dialog__WEBPACK_IMPORTED_MODULE_1__["MatDialogContent"], _angular_material_table__WEBPACK_IMPORTED_MODULE_2__["MatTable"], _angular_material_table__WEBPACK_IMPORTED_MODULE_2__["MatColumnDef"], _angular_material_table__WEBPACK_IMPORTED_MODULE_2__["MatHeaderCellDef"], _angular_material_table__WEBPACK_IMPORTED_MODULE_2__["MatCellDef"], _angular_material_table__WEBPACK_IMPORTED_MODULE_2__["MatHeaderRowDef"], _angular_material_table__WEBPACK_IMPORTED_MODULE_2__["MatRowDef"], _angular_material_table__WEBPACK_IMPORTED_MODULE_2__["MatHeaderCell"], _angular_material_table__WEBPACK_IMPORTED_MODULE_2__["MatCell"], _angular_material_select__WEBPACK_IMPORTED_MODULE_8__["MatSelect"], _angular_forms__WEBPACK_IMPORTED_MODULE_9__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_9__["NgModel"], _angular_material_core__WEBPACK_IMPORTED_MODULE_10__["MatOption"], _angular_forms__WEBPACK_IMPORTED_MODULE_9__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_9__["SelectControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_9__["NgSelectOption"], _angular_forms__WEBPACK_IMPORTED_MODULE_9__["ɵangular_packages_forms_forms_x"], _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_11__["MatDatepickerInput"], _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_11__["MatDatepickerToggle"], _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_11__["MatDatepicker"], _angular_material_table__WEBPACK_IMPORTED_MODULE_2__["MatHeaderRow"], _angular_material_table__WEBPACK_IMPORTED_MODULE_2__["MatRow"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2RpYWxvZy9tZW1iZXItcGNwZGF0YS9tZW1iZXItcGNwZGF0YS5jb21wb25lbnQuY3NzIn0= */"] });
+    } }, directives: [_angular_material_dialog__WEBPACK_IMPORTED_MODULE_1__["MatDialogTitle"], _angular_material_button__WEBPACK_IMPORTED_MODULE_7__["MatButton"], _angular_material_icon__WEBPACK_IMPORTED_MODULE_8__["MatIcon"], _angular_material_dialog__WEBPACK_IMPORTED_MODULE_1__["MatDialogContent"], _angular_material_table__WEBPACK_IMPORTED_MODULE_2__["MatTable"], _angular_material_table__WEBPACK_IMPORTED_MODULE_2__["MatColumnDef"], _angular_material_table__WEBPACK_IMPORTED_MODULE_2__["MatHeaderCellDef"], _angular_material_table__WEBPACK_IMPORTED_MODULE_2__["MatCellDef"], _angular_material_table__WEBPACK_IMPORTED_MODULE_2__["MatHeaderRowDef"], _angular_material_table__WEBPACK_IMPORTED_MODULE_2__["MatRowDef"], _angular_material_table__WEBPACK_IMPORTED_MODULE_2__["MatHeaderCell"], _angular_material_table__WEBPACK_IMPORTED_MODULE_2__["MatCell"], _angular_material_select__WEBPACK_IMPORTED_MODULE_9__["MatSelect"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["NgModel"], _angular_material_core__WEBPACK_IMPORTED_MODULE_11__["MatOption"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["SelectControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["NgSelectOption"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["ɵangular_packages_forms_forms_x"], _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_12__["MatDatepickerInput"], _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_12__["MatDatepickerToggle"], _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_12__["MatDatepicker"], _angular_material_table__WEBPACK_IMPORTED_MODULE_2__["MatHeaderRow"], _angular_material_table__WEBPACK_IMPORTED_MODULE_2__["MatRow"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2RpYWxvZy9tZW1iZXItcGNwZGF0YS9tZW1iZXItcGNwZGF0YS5jb21wb25lbnQuY3NzIn0= */"] });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MemberPcpdataComponent, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
@@ -1035,7 +931,7 @@ MemberPcpdataComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵd
                 templateUrl: './member-pcpdata.component.html',
                 styleUrls: ['./member-pcpdata.component.css']
             }]
-    }], function () { return [{ type: _services_apicontact_service__WEBPACK_IMPORTED_MODULE_4__["ApicontactService"] }, { type: _angular_material_dialog__WEBPACK_IMPORTED_MODULE_1__["MatDialog"] }, { type: _services_common_tasks_service__WEBPACK_IMPORTED_MODULE_5__["CommonTasksService"] }, { type: _angular_material_dialog__WEBPACK_IMPORTED_MODULE_1__["MatDialogRef"] }, { type: undefined, decorators: [{
+    }], function () { return [{ type: _services_apicontact_service__WEBPACK_IMPORTED_MODULE_5__["ApicontactService"] }, { type: _angular_material_dialog__WEBPACK_IMPORTED_MODULE_1__["MatDialog"] }, { type: _services_common_tasks_service__WEBPACK_IMPORTED_MODULE_6__["CommonTasksService"] }, { type: _angular_material_dialog__WEBPACK_IMPORTED_MODULE_1__["MatDialogRef"] }, { type: undefined, decorators: [{
                 type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
                 args: [_angular_material_dialog__WEBPACK_IMPORTED_MODULE_1__["MAT_DIALOG_DATA"]]
             }] }]; }, null); })();
@@ -2732,10 +2628,13 @@ __webpack_require__.r(__webpack_exports__);
 
 class CommonTasksService {
     constructor() { }
-    datesCollide(startdate1, enddate1, startdate2, enddate2) {
-        if (((startdate1 <= enddate2 && (enddate2 != null)) || (startdate2 <= enddate1 && (enddate1 != null)))) {
-            return true;
-        }
+    datesCollide(a_start, a_end, b_start, b_end) {
+        if (a_start <= b_start && b_start <= a_end)
+            return true; // b starts in a
+        if (a_start <= b_end && b_end <= a_end)
+            return true; // b ends in a
+        if (b_start < a_start && a_end < b_end)
+            return true; // a in b
         return false;
     }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormArray } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ApicontactService } from 'src/app/services/apicontact.service';
+import { weblink } from 'src/app/raw/defaultdata';
 
 @Component({
   selector: 'app-claim-view',
@@ -150,6 +151,9 @@ export class ClaimViewComponent implements OnInit {
       'AmbDrpZip':new FormControl(),
       'servicelines':new FormArray([])
     })
+  }
+  SearchMember(){
+    const win=window.open(weblink+"searchmember","_blank","width:100;height:100");
   }
   close(){
     window.close();

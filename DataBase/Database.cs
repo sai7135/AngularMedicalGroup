@@ -62,6 +62,22 @@ namespace DataBase
                 throw;
             }
         }
+        public async Task<List<FileDataModel>> GetFileData(FileDataSearchModel search)
+        {
+            try
+            {
+                using (EDIDatabase db = new EDIDatabase())
+                {
+
+                    List<FileDataModel> fd = db.Database.SqlQuery<FileDataModel>("spGetClaimUp '" + search.FileId+"','"+search.FileError+"','"+search.TP+"','"+search.UploadFrom+"','"+search.UploadTo+"','"+search.Format+"','"+search.UploadedBy+"','"+search.UsageIndicator+"','"+search.FileName+"'").ToList();
+                    return fd;
+                }
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+        }
         public async Task<List<ClaimsData>> GetClaimData(string claimid) {
             try
             {
@@ -971,7 +987,8 @@ namespace DataBase
                                 membername = "" + r["L2010BA_1_NM1_1_NM104"] + " " + r["L2010BA_1_NM1_1_NM103"],
                                 dob = dob,
                                 renderingprovider = "" + r["L2310B_1_NM1_1_NM104"] + " " + r["L2310B_1_NM1_1_NM103"],
-                                billedamount = "" + r["L2300_1_CLM_1_CLM02"]
+                                billedamount = "" + r["L2300_1_CLM_1_CLM02"],
+                                uploadDate=""+r["UploadDate"]
                             });
                         }
                         catch (Exception e) {
@@ -2758,6 +2775,22 @@ namespace DataBase
                     }
                 }
                 return new PcpAutoFillModel { organizationName=organizationName, providerFirstName = providerFirstName, providerLastName=providerLastName};
+            }
+        }
+
+        public async Task<List<MemberSearchResult>> SearchMember(MemberSearchModel msm)
+        {
+            try
+            {
+                using (EDIDatabase db = new EDIDatabase())
+                {
+                    string query = "spsearchmemberclaim '" + msm.memid + "','" + msm.lastname + "','" + msm.firstname + "','" + msm.hp + "','" + msm.dob + "','" + msm.gender + "'";
+                    List<MemberSearchResult> mr = db.Database.SqlQuery<MemberSearchResult>(query).ToList();
+                    return mr;
+                }
+            }
+            catch (Exception e) {
+                throw;
             }
         }
     }

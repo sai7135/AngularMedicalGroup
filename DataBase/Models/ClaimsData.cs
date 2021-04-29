@@ -105,7 +105,7 @@ namespace DataBase.Models
         public string AmbPikCity { get; set; }
         public string AmbPikSt { get; set; }
         public string AmbPikZip { get; set; }
-        public string TotalChrg { get; set; }
+        public decimal TotalChrg { get; set; }
         public string PatPaid { get; set; }
         public string PayerPaidAmt { get; set; }
         public string AmbDrpAdd1 { get; set; }

@@ -14,8 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MembersComponent,
     MembersearchComponent,
     MemberHPdataComponent,
-    MemberPcpdataComponent,
-    DatePickerCustComponent
+    MemberPcpdataComponent
       ],
   imports: [
     MemberRoutingModule,

@@ -14,7 +14,8 @@ const route:Routes=[
   {path:'practesionar-data',loadChildren:()=>import('../LazyComponents/practionar-data/practionar-data.module').then(m=>m.PractionarDataModule)},
   {path:'benefit-master',loadChildren:()=>import('../LazyComponents/benefit-master/benefit-master.module').then(m=>m.BenefitMasterModule)},
   {path:'addbenefit-master',loadChildren:()=>import('../LazyComponents/add-benfit-master/add-benfit-master.module').then(m=>m.AddBenfitMasterModule)},
-  {path:'837PUpload',loadChildren:()=>import('../LazyComponents/upload837-p/upload837-p.module').then(m=>m.Upload837PModule)}
+  {path:'837PUpload',loadChildren:()=>import('../LazyComponents/upload837-p/upload837-p.module').then(m=>m.Upload837PModule)},
+  {path:'Claim-list',loadChildren:()=>import('../LazyComponents/claim-list/claim-list.module').then(m=>m.ClaimListModule)}
 ];
 
 
